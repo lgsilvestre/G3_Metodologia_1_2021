@@ -1,8 +1,9 @@
 public class principal {
-    public static int cambio_frame = 0;
     public static boolean tipo_usuario =false;
+    public static ventanainicio v_inicio = new ventanainicio();
+    public static ventanaprincipal v_principal = new ventanaprincipal();
     public static void main(String[] args){
-        ventanainicio v_inicio = new ventanainicio();
         v_inicio.setVisible(true);
+        v_principal.setVisible(false);
     }
 }

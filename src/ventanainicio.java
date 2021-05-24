@@ -5,11 +5,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 public class ventanainicio extends JFrame{
     private JPanel panel_inicio = new JPanel();
@@ -27,7 +27,7 @@ public class ventanainicio extends JFrame{
     }
     public void componentes(){
         //Texto
-        JLabel error_campo = new JLabel("Error en el cambio de usuario o contraseña");
+        JLabel error_campo = new JLabel("Error en el campo de usuario o contraseña");
         error_campo.setBounds(250,465,250,40);
         error_campo.setForeground(Color.RED);
         error_campo.setVisible(false);
@@ -112,14 +112,12 @@ public class ventanainicio extends JFrame{
                     JButton source = (JButton)ae.getSource();
                     if(iniciarseccion.getText()==source.getText()){
                         if(usuario_caja.getText().equals("") || contrasena_caja.getText().equals("") || (principal.tipo_usuario==true && codigoadmin_caja.getText().equals(""))){
-                            System.out.println("a");
                             error_campo.setVisible(true);
                         }else{
                             error_campo.setVisible(false);
-                            System.out.println("b");
+                            principal.v_inicio.setVisible(false);
+                            principal.v_principal.setVisible(true);
                         }
-                        //principal.cambio_frame=1;
-                        //System.out.println("a");
                     }
             }
         };
