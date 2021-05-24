@@ -1,8 +1,8 @@
 public class basedatos {
     // Datos
-    public String[] nombres_usuario={"jose"};
-    public String[] contrasena_usuario={"holacomoestas"};
-    public String[] codigo_admin={null};
+    public String[] nombres_usuario={"jose", "alvaro"};
+    public String[] contrasena_usuario={"holacomoestas","1234"};
+    public String[] codigo_admin={null, "alvaroad"};
     public basedatos(){}
     
     // Retornar Listas

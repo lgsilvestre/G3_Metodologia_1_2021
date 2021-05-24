@@ -116,7 +116,7 @@ public class ventanainicio extends JFrame{
                         }else{
                             error_campo.setVisible(false);
                             if(principal.tipo_usuario){
-                                if(validarusuario(usuario_caja.getText(), contrasena_caja.getText(), null)){
+                                if(validarusuario(usuario_caja.getText(), contrasena_caja.getText(), codigoadmin_caja.getText())){
                                     // Si es que el usuario ingresa correctamente todos los campos
                                     principal.v_inicio.setVisible(false);
                                     principal.v_principal.setVisible(true);
@@ -124,7 +124,7 @@ public class ventanainicio extends JFrame{
                                     error_campo.setVisible(true);
                                 }
                             }else{
-                                if(validarusuario(usuario_caja.getText(), contrasena_caja.getText(), codigoadmin_caja.getText())){
+                                if(validarusuario(usuario_caja.getText(), contrasena_caja.getText(), null)){
                                     // Si es que el usuario ingresa correctamente todos los campos
                                     principal.v_inicio.setVisible(false);
                                     principal.v_principal.setVisible(true);
