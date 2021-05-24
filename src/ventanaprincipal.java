@@ -24,6 +24,16 @@ public class ventanaprincipal extends JFrame{
         componentes();
     }
     private void componentes(){
-        
+
+
+        // Logo Triviño
+        JLabel logotrivino = new JLabel(new ImageIcon("imagenes\\LogoGrupoTrivino_pagina.png"));
+        logotrivino.setBounds(0,0,150,113);
+        panel_principal.add(logotrivino);
+
+        // Fondo del frame
+        JLabel fondo_frame = new JLabel(new ImageIcon("imagenes//fondo_frame.jpg"));
+        fondo_frame.setBounds(0,0,800,800);
+        panel_principal.add(fondo_frame);
     }
 }

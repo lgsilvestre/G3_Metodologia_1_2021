@@ -165,10 +165,10 @@ public class ventanainicio extends JFrame{
         System.out.println(buscarindice);
         if(buscarindice!=-1){
             if(principal.tipo_usuario==true){
-                if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice].equals(codigoadmin)){
-                    usuariovalido=true;
-                }else{
+                if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice]==null){
                     usuariovalido=false;
+                }else if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice].equals(codigoadmin)){
+                    usuariovalido=true;
                 }
             }else{
                 if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice]==null){
