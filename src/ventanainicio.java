@@ -115,8 +115,23 @@ public class ventanainicio extends JFrame{
                             error_campo.setVisible(true);
                         }else{
                             error_campo.setVisible(false);
-                            principal.v_inicio.setVisible(false);
-                            principal.v_principal.setVisible(true);
+                            if(principal.tipo_usuario){
+                                if(validarusuario(usuario_caja.getText(), contrasena_caja.getText(), null)){
+                                    // Si es que el usuario ingresa correctamente todos los campos
+                                    principal.v_inicio.setVisible(false);
+                                    principal.v_principal.setVisible(true);
+                                }else{
+                                    error_campo.setVisible(true);
+                                }
+                            }else{
+                                if(validarusuario(usuario_caja.getText(), contrasena_caja.getText(), codigoadmin_caja.getText())){
+                                    // Si es que el usuario ingresa correctamente todos los campos
+                                    principal.v_inicio.setVisible(false);
+                                    principal.v_principal.setVisible(true);
+                                }else{
+                                    error_campo.setVisible(true);
+                                }
+                            }
                         }
                     }
             }
@@ -125,7 +140,7 @@ public class ventanainicio extends JFrame{
         iniciarseccion.addActionListener(action_reserva);
 
         // Logo Triviño
-        JLabel logotrivino = new JLabel(new ImageIcon("imagenes//LogoGrupoTrivino.png"));
+        JLabel logotrivino = new JLabel(new ImageIcon("imagenes\\LogoGrupoTrivino.png"));
         logotrivino.setBounds(270,0,200,150);
         panel_inicio.add(logotrivino);
 
@@ -138,7 +153,32 @@ public class ventanainicio extends JFrame{
         JLabel fondo_frame = new JLabel(new ImageIcon("imagenes//fondo_frame.jpg"));
         fondo_frame.setBounds(0,0,800,800);
         panel_inicio.add(fondo_frame);
-
-       
+    }
+    public boolean validarusuario(String usuario, String contrasena, String codigoadmin){
+        int buscarindice = -1;
+        boolean usuariovalido=false;
+        for(int i=0; i<principal.base_datos.getTamNU(); i++){
+            if(principal.base_datos.getNombres_usuario()[i].equals(usuario)){
+                buscarindice=i;
+            }
+        }
+        System.out.println(buscarindice);
+        if(buscarindice!=-1){
+            if(principal.tipo_usuario==true){
+                if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice].equals(codigoadmin)){
+                    usuariovalido=true;
+                }else{
+                    usuariovalido=false;
+                }
+            }else{
+                if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice]==null){
+                    usuariovalido=true;
+                }else{
+                    usuariovalido=false;
+                }
+            }
+            
+        }
+        return usuariovalido;
     }
 }
