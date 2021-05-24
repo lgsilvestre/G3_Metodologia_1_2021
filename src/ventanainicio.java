@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 
 public class ventanainicio extends JFrame{
     private JPanel panel_inicio = new JPanel();
+    private String nombre_usuario = new String();
+    private String contrasena_usuario = new String();
 
     public ventanainicio(){
         this.setSize(800,800);
@@ -47,6 +49,12 @@ public class ventanainicio extends JFrame{
         });
         panel_inicio.add(tipo_usuario);
         //Texto
+        JLabel error_campo = new JLabel("Error en el cambio de usuario o contraseña");
+        error_campo.setBounds(250,400,250,40);
+        error_campo.setForeground(Color.RED);
+        error_campo.setVisible(false);
+        panel_inicio.add(error_campo);
+
         JLabel usuario = new JLabel("Usuario");
         usuario.setBounds(250,270, 70, 100);
         panel_inicio.add(usuario);
@@ -60,40 +68,47 @@ public class ventanainicio extends JFrame{
         titulo_frame.setFont(new Font("arial",Font.PLAIN, 30));
         titulo_frame.setForeground(Color.ORANGE);
         panel_inicio.add(titulo_frame);
+        
         // Botones
-        JButton salir = new JButton();
-        salir.setText("Salir");
-        salir.setBounds(100,600, 100, 30);
-        panel_inicio.add(salir);
-
+        /* no se si lo ocuparemos xd
+            JButton salir = new JButton();
+            salir.setText("Salir");
+            salir.setBounds(100,600, 100, 30);
+            panel_inicio.add(salir);
+        */
         JButton iniciarseccion = new JButton();
         iniciarseccion.setText("Iniciar Seccion");
-        iniciarseccion.setBounds(600,600,150,30);
+        iniciarseccion.setBounds(300,450,150,20);
         panel_inicio.add(iniciarseccion);
 
         // Cajas de texto
-        JTextField usuario_cmbox= new JTextField();
-        usuario_cmbox.setBounds(340,315,160,20);
-        panel_inicio.add(usuario_cmbox);
+        JTextField usuario_caja= new JTextField("");
+        usuario_caja.setBounds(340,315,160,20);
+        panel_inicio.add(usuario_caja);
         
-        JTextField contrasena_cmbox= new JTextField();
-        contrasena_cmbox.setBounds(340,355,160,20);
-        panel_inicio.add(contrasena_cmbox);
+        JTextField contrasena_caja= new JTextField("");
+        contrasena_caja.setBounds(340,355,160,20);
+        panel_inicio.add(contrasena_caja);
 
         // ActionListener
         ActionListener action_reserva = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae){
                     JButton source = (JButton)ae.getSource();
-                    if(salir.getText()==source.getText()){
-                        System.exit(0);
-                    }else if(iniciarseccion.getText()==source.getText()){
+                    nombre_usuario=usuario_caja.getText();
+                    contrasena_usuario=contrasena_caja.getSelectedText();
+                    if(iniciarseccion.getText()==source.getText()){
+                        System.out.println("1"+nombre_usuario+"1");
+                        if(nombre_usuario.equals("") || contrasena_usuario.equals("")){
+                            System.out.println("a");
+                            error_campo.setVisible(true);
+                        }
                         //principal.cambio_frame=1;
                         //System.out.println("a");
                     }
             }
         };
-        salir.addActionListener(action_reserva);
+        //salir.addActionListener(action_reserva);
         iniciarseccion.addActionListener(action_reserva);
 
         // Logo Triviño
