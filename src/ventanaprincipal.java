@@ -24,7 +24,16 @@ public class ventanaprincipal extends JFrame{
         componentes();
     }
     private void componentes(){
+        // Botones
+        JButton buscar = new JButton();
+        buscar.setText("");
+        buscar.setBounds(630,60,30,30);
+        panel_principal.add(buscar);
 
+        // Cajas de texto
+        JTextField buscar_caja= new JTextField("");
+        buscar_caja.setBounds(200,60,400,30);
+        panel_principal.add(buscar_caja);
 
         // Logo Triviño
         JLabel logotrivino = new JLabel(new ImageIcon("imagenes\\LogoGrupoTrivino_pagina.png"));
