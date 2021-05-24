@@ -26,29 +26,9 @@ public class ventanainicio extends JFrame{
         componentes();
     }
     public void componentes(){
-        // Combo Box
-        JComboBox tipo_usuario = new JComboBox<>(new String[]{"Usuario", "Administrador"});
-        tipo_usuario.setBounds(250,230,110,20);
-        tipo_usuario.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                switch (tipo_usuario.getSelectedIndex()) {
-                    case 0:
-                        principal.tipo_usuario=false;
-                        break;
-                    case 1:
-                        principal.tipo_usuario=true;
-                        break;
-                    default:
-                        principal.tipo_usuario=false;
-                        break;
-                }
-            }
-        });
-        panel_inicio.add(tipo_usuario);
         //Texto
         JLabel error_campo = new JLabel("Error en el cambio de usuario o contraseña");
-        error_campo.setBounds(250,400,250,40);
+        error_campo.setBounds(250,465,250,40);
         error_campo.setForeground(Color.RED);
         error_campo.setVisible(false);
         panel_inicio.add(error_campo);
@@ -60,6 +40,11 @@ public class ventanainicio extends JFrame{
         JLabel contrasena = new JLabel("Contraseña");
         contrasena.setBounds(250,315, 70, 100);
         panel_inicio.add(contrasena);
+
+        JLabel codigo_admin = new JLabel("Codigo Admin");
+        codigo_admin.setBounds(250,360, 100, 100);
+        codigo_admin.setVisible(false);
+        panel_inicio.add(codigo_admin);
 
         JLabel titulo_frame = new JLabel("Triviño Prime Video");
         titulo_frame.setBounds(250,120, 500, 100);
@@ -88,16 +73,49 @@ public class ventanainicio extends JFrame{
         contrasena_caja.setBounds(340,355,160,20);
         panel_inicio.add(contrasena_caja);
 
+        JTextField codigoadmin_caja= new JTextField("");
+        codigoadmin_caja.setBounds(340,400,160,20);
+        codigoadmin_caja.setVisible(false);
+        panel_inicio.add(codigoadmin_caja);
+
+        // Combo Box
+        JComboBox tipo_usuario = new JComboBox<>(new String[]{"Usuario", "Administrador"});
+        tipo_usuario.setBounds(250,230,110,20);
+        tipo_usuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (tipo_usuario.getSelectedIndex()) {
+                    case 0:
+                        principal.tipo_usuario=false;
+                        codigo_admin.setVisible(false);
+                        codigoadmin_caja.setVisible(false);
+                        break;
+                    case 1:
+                        principal.tipo_usuario=true;
+                        codigo_admin.setVisible(true);
+                        codigoadmin_caja.setVisible(true);
+                        break;
+                    default:
+                    codigo_admin.setVisible(false);
+                        codigoadmin_caja.setVisible(false);
+                        principal.tipo_usuario=false;
+                        break;
+                }
+            }
+        });
+        panel_inicio.add(tipo_usuario);
+
         // ActionListener
         ActionListener action_reserva = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae){
                     JButton source = (JButton)ae.getSource();
                     if(iniciarseccion.getText()==source.getText()){
-                        if(usuario_caja.getText().equals("") || contrasena_caja.getText().equals("")){
+                        if(usuario_caja.getText().equals("") || contrasena_caja.getText().equals("") || (principal.tipo_usuario==true && codigoadmin_caja.getText().equals(""))){
                             System.out.println("a");
                             error_campo.setVisible(true);
                         }else{
+                            error_campo.setVisible(false);
                             System.out.println("b");
                         }
                         //principal.cambio_frame=1;
