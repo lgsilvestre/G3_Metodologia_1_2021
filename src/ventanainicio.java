@@ -13,8 +13,6 @@ import java.awt.event.ActionListener;
 
 public class ventanainicio extends JFrame{
     private JPanel panel_inicio = new JPanel();
-    private String nombre_usuario = new String();
-    private String contrasena_usuario = new String();
 
     public ventanainicio(){
         this.setSize(800,800);
@@ -95,13 +93,12 @@ public class ventanainicio extends JFrame{
             @Override
             public void actionPerformed(ActionEvent ae){
                     JButton source = (JButton)ae.getSource();
-                    nombre_usuario=usuario_caja.getText();
-                    contrasena_usuario=contrasena_caja.getSelectedText();
                     if(iniciarseccion.getText()==source.getText()){
-                        System.out.println("1"+nombre_usuario+"1");
-                        if(nombre_usuario.equals("") || contrasena_usuario.equals("")){
+                        if(usuario_caja.getText().equals("") || contrasena_caja.getText().equals("")){
                             System.out.println("a");
                             error_campo.setVisible(true);
+                        }else{
+                            System.out.println("b");
                         }
                         //principal.cambio_frame=1;
                         //System.out.println("a");
