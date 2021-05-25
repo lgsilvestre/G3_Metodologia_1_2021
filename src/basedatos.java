@@ -8,7 +8,7 @@ public class basedatos {
         "01/09/2010","01/09/2010","01/09/2010","01/09/2010","15/04/2012","15/04/2012","15/04/2012","15/04/2012","15/04/2012","18/07/2019","18/07/2019","18/07/2019","18/07/2019",
         "18/07/2019","18/07/2019","28/04/2020","28/04/2020","28/04/2020","28/04/2020","28/04/2020","23/05/2021","23/05/2021","23/05/2021","23/05/2021","23/05/2021"}; 
     public String[] codigo_admin={null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-        null,null,null,"DavidLabra30ad","SergioLozano31ad","JuanVilchez32ad","MiguelSalas33ad","MarcelaRincon34ad","LuisSilvestre35ad"};
+        null,null,null,null,"SergioLozano31ad","JuanVilchez32ad","MiguelSalas33ad","MarcelaRincon34ad","LuisSilvestre35ad"};
     public basedatos(){}
     // Retornar Listas
     public String[] getNombres_usuario(){return nombres_usuario;}
