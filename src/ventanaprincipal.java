@@ -3,33 +3,38 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ventanaprincipal extends JFrame{
     private JPanel panel_principal = new JPanel();
     private int portadaseleccionada=1;
-    // Cajas de texto
-    JTextField buscar_caja= new JTextField("");
-    // Logo Triviño
-    JLabel logotrivino = new JLabel(new ImageIcon("imagenes\\LogoGrupoTrivino_pagina.png"));
-    // Imagen usuario (por mientras)
+    // Componentes del principal
+        // Cajas de texto
+    JTextField buscar_caja= new JTextField();
+        // Logo Triviño
+    JButton logotrivino = new JButton(new ImageIcon("imagenes\\LogoGrupoTrivino_pagina.png"));
+        // Imagen usuario (por mientras)
     JLabel imagen_usuario = new JLabel(new ImageIcon("imagenes\\foto_usuario.png"));
-    // Imagen portada potter principal
+        // Imagen portada potter principal
     JLabel portadapotter = new JLabel(new ImageIcon("imagenes_portada\\potter.jpg"));
-    // Imagen portada el pajaro con lepra principal
+        // Imagen portada el pajaro con lepra principal
     JLabel portadapajaroconlepra = new JLabel(new ImageIcon("imagenes_portada\\elpajaroconlepra.png"));
-    // Botones
+        // Botones
     JButton buscar = new JButton(new ImageIcon("imagenes//imagen_buscar.png"));
     JButton siguiente = new JButton(new ImageIcon("imagenes//siguiente.png"));
     JButton atras = new JButton(new ImageIcon("imagenes//atras.png"));
-    // Fondo del frame
-    JLabel fondo_frame = new JLabel(new ImageIcon("imagenes//fondo_frame.jpg"));    
-
-
+        // Fondo del frame
+    JLabel fondo_frame = new JLabel(new ImageIcon("imagenes//fondo_frame.jpg"));
+    
+    // Componentes del buscar
+        // Texto 
+    JLabel busqueda= new JLabel();
 
     public ventanaprincipal(){
         this.setSize(800,800);
@@ -50,7 +55,16 @@ public class ventanaprincipal extends JFrame{
 
         // Logo Triviño
         logotrivino.setBounds(0,0,150,113);
+        logotrivino.setBackground(Color.BLACK);
+        logotrivino.setOpaque(false);
+        logotrivino.setContentAreaFilled(false);
+        logotrivino.setBorderPainted(false);
         panel_principal.add(logotrivino);
+        ActionListener actionprincipal = new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                invisible_componentesbusqueda();
+            }
+        };logotrivino.addActionListener(actionprincipal);
 
         // Imagen usuario (por mientras)
         imagen_usuario.setBounds(680,20,100,93);
@@ -73,8 +87,8 @@ public class ventanaprincipal extends JFrame{
         // Action para el boton buscar
         ActionListener actionbuscar = new ActionListener(){
             public void actionPerformed(ActionEvent ae){
-                System.out.println("buscar");
                 invisible_componentesprincipal();
+                componentesbusqueda();
             }
         };buscar.addActionListener(actionbuscar);
  
@@ -120,18 +134,44 @@ public class ventanaprincipal extends JFrame{
     }
     public void invisible_componentesprincipal(){
         // Se oculta todo para cambiar los componentes del frame
-            // Cajas de texto
-        buscar_caja.setVisible(false);
             // Imagen portada potter principal
         portadapotter.setVisible(false);
             // Imagen portada el pajaro con lepra principal
         portadapajaroconlepra.setVisible(false);
+            // Fondo del frame
+        fondo_frame.setVisible(false);
             // Botones
-        buscar.setVisible(false);
         siguiente.setVisible(false);
         atras.setVisible(false);
+        // Se muestran los componentes de busqueda
+            // Texto
+        busqueda.setVisible(true);
+    }
+    public void invisible_componentesbusqueda(){
+        // Se muestra todos los componentes de busqueda
+             // Texto 
+        busqueda.setVisible(false);
+        // Se muestra todos los componentes de principal
+            // Imagen portada potter principal
+            portadapotter.setVisible(true);
+            // Imagen portada el pajaro con lepra principal
+        portadapajaroconlepra.setVisible(true);
+            // Fondo del frame
+        fondo_frame.setVisible(true);
+            // Botones
+        siguiente.setVisible(true);
+        atras.setVisible(true);
+
     }
     public void componentesbusqueda(){
+        // Texto 
+        busqueda.setText("Resultados de "+buscar_caja.getText()+":");
+        busqueda.setForeground(Color.WHITE);
+        busqueda.setBounds(200,100,200,40);
+        panel_principal.add(busqueda);
 
+        // Fondo del frame
+        fondo_frame.setVisible(true);
+        panel_principal.add(fondo_frame);
     }
 }

@@ -1,4 +1,6 @@
 import java.awt.Component;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,6 +10,8 @@ import javax.media.CannotRealizeException;
 import javax.media.Manager;
 import javax.media.NoPlayerException;
 import javax.media.Player;
+import javax.media.bean.playerbean.MediaPlayer;
+import javax.print.attribute.standard.Media;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,9 +22,8 @@ import javax.swing.JPanel;
 
 public class reproductorvideo extends JFrame{
     JPanel panel_reproductor = new JPanel();
-    Player mediaPlayer;
-    Component video;
-    Component controles;
+    URL urlArchivoMusica;
+    Player reproductor;
     
     public reproductorvideo(){
         setTitle("Empresa Triviño LTDA");
@@ -28,9 +31,24 @@ public class reproductorvideo extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        componentes();
+        try{
+            urlArchivoMusica= new URL ("file:/C:/Users/Paul Quezada/Documents/GitHub/G3_Metodologia_1_2021/videos/elpajarrako.wav");
+            reproductor = Manager.createRealizedPlayer(urlArchivoMusica);
+            Component controles = reproductor.getControlPanelComponent();
+
+            if(controles!=null){
+                panel_reproductor.add(controles);
+                controles.setLocation(0,185);
+                controles.setSize(320,25);
+                //panel_reproductor.add(controles);
+            }
+            System.out.println("a");
+            reproductor.start();
+        }catch(Exception e){
+            System.out.println("error al reproducir el mp3");
+        }
     }
-    private void componentes(){
+    /*private void componentes(){
 
         URL url = null;
         try {
@@ -52,5 +70,55 @@ public class reproductorvideo extends JFrame{
         }catch(IOException | NoPlayerException | CannotRealizeException ex){
             Logger.getLogger(reproductorvideo.class.getName()).log(Level.SEVERE,null, ex);
         }
+    }*/
+
+    /////////////////
+    // No funciona //
+    ////////////////
+
+    /*private void crearesena(){
+        Platform.runLater(new Runnable(){
+            @Override
+
+            public void run(){
+                File file = new File("C:\\Users\\Paul Quezada\\Documents\\GitHub\\G3_Metodologia_1_2021\\videos\\elpajarrako.mp4");
+                MediaPlayer oracleVid = MediaPlayer(new Media(file.toURI().toString()));
+                panel_reproductor.setScene(new Scene (new Group(new MediaPlayer(oracleVid))));
+                oracleVid.setVolumeLevel(0.7);
+                oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
+                oracleVid.play();
+            }});
+        }
+    }*/
+    /////////////////
+    // NO FUNCIONA //
+    /////////////////
+    /*private void reproducirvideo(){
+        rep = new Player (new FileInputStream("C:\\Users\\Paul Quezada\\Documents\\GitHub\\G3_Metodologia_1_2021\\videos\\elpajarrako.mp4"));
+        rep.play();
+    }*/
+
+    // FUNCIONAL //
+    /*
+    URL urlArchivoMusica;
+    Player reproductor;
+    public void reproductor_audio(){
+        try{
+            urlArchivoMusica= new URL ("file:/C:/Users/Paul Quezada/Documents/GitHub/G3_Metodologia_1_2021/videos/elpajarrako.wav");
+            reproductor = Manager.createRealizedPlayer(urlArchivoMusica);
+            Component controles = reproductor.getControlPanelComponent();
+
+            if(controles!=null){
+                this.add(controles);
+                controles.setLocation(0,185);
+                controles.setSize(320,15);
+                //panel_reproductor.add(controles);
+            }
+            System.out.println("a");
+            reproductor.start();
+        }catch(Exception e){
+            System.out.println("error al reproducir el mp3");
+        }
     }
+    */
 }
