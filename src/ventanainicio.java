@@ -52,13 +52,6 @@ public class ventanainicio extends JFrame{
         titulo_frame.setForeground(Color.ORANGE);
         panel_inicio.add(titulo_frame);
         
-        // Botones
-        /* no se si lo ocuparemos xd
-            JButton salir = new JButton();
-            salir.setText("Salir");
-            salir.setBounds(100,600, 100, 30);
-            panel_inicio.add(salir);
-        */
         JButton iniciarseccion = new JButton();
         iniciarseccion.setText("Iniciar Seccion");
         iniciarseccion.setBounds(300,450,150,20);
@@ -144,7 +137,7 @@ public class ventanainicio extends JFrame{
         logotrivino.setBounds(270,0,200,150);
         panel_inicio.add(logotrivino);
 
-        // NO se xdxd
+        // Recuadro para el incio de seccion
         JLabel recuadro_inicioseccion = new JLabel(new ImageIcon("imagenes//imagen_inicioseccion.jpg"));
         recuadro_inicioseccion.setBounds(220,200,300,300);
         panel_inicio.add(recuadro_inicioseccion);

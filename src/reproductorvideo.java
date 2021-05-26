@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,13 +6,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.media.CannotRealizeException;
 import javax.media.Manager;
-import javax.media.MediaLocator;
 import javax.media.NoPlayerException;
 import javax.media.Player;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-// NO FUNCIONA :C
+/////////////////////
+// NO FUNCIONA :C //
+/////////////////////
+
+
 public class reproductorvideo extends JFrame{
     JPanel panel_reproductor = new JPanel();
     Player mediaPlayer;
