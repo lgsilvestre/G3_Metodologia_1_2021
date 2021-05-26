@@ -12,27 +12,30 @@ import java.awt.event.ActionListener;
 
 
 public class ventanainicio extends JFrame{
+    // Panel
     private JPanel panel_inicio = new JPanel();
-
+    // Contructor
     public ventanainicio(){
+        // Tamaño por defecto de el frame
         this.setSize(800,800);
         
         this.setLocationRelativeTo(null);
         this.setTitle("Empresa Triviño LTDA");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         panel_inicio.setLayout(null);
-        
+        // Añadimos el panel
         add(panel_inicio);
+        // Inicializamos los componentes
         componentes();
     }
     public void componentes(){
-        //Texto
+        //Texto que se añadira en el panel
         JLabel error_campo = new JLabel("Error en el campo de usuario o contraseña");
         error_campo.setBounds(250,465,250,40);
         error_campo.setForeground(Color.RED);
         error_campo.setVisible(false);
         panel_inicio.add(error_campo);
-
+        
         JLabel usuario = new JLabel("Usuario");
         usuario.setBounds(250,270, 70, 100);
         panel_inicio.add(usuario);
@@ -52,6 +55,7 @@ public class ventanainicio extends JFrame{
         titulo_frame.setForeground(Color.ORANGE);
         panel_inicio.add(titulo_frame);
         
+        // Boton de inciar seccion
         JButton iniciarseccion = new JButton();
         iniciarseccion.setText("Iniciar Seccion");
         iniciarseccion.setBounds(300,450,150,20);
@@ -71,7 +75,7 @@ public class ventanainicio extends JFrame{
         codigoadmin_caja.setVisible(false);
         panel_inicio.add(codigoadmin_caja);
 
-        // Combo Box
+        // Combo Box para el ingreso de usuario o por el otro lado administrador
         JComboBox tipo_usuario = new JComboBox<>(new String[]{"Usuario", "Administrador"});
         tipo_usuario.setBounds(250,230,110,20);
         tipo_usuario.addActionListener(new ActionListener() {
@@ -79,17 +83,21 @@ public class ventanainicio extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 switch (tipo_usuario.getSelectedIndex()) {
                     case 0:
+                        // El tipo de usuario es USUARIO
                         principal.tipo_usuario=false;
                         codigo_admin.setVisible(false);
                         codigoadmin_caja.setVisible(false);
                         break;
                     case 1:
+                        // El tipo de usuario es ADMINISTRADOR
                         principal.tipo_usuario=true;
                         codigo_admin.setVisible(true);
                         codigoadmin_caja.setVisible(true);
                         break;
                     default:
-                    codigo_admin.setVisible(false);
+                        // Por default el usuario es USUARIO
+                        principal.tipo_usuario=false;
+                        codigo_admin.setVisible(false);
                         codigoadmin_caja.setVisible(false);
                         principal.tipo_usuario=false;
                         break;
@@ -97,31 +105,36 @@ public class ventanainicio extends JFrame{
             }
         });
         panel_inicio.add(tipo_usuario);
-
+        // Si precionan los botones agregamos un oyente de accion
         // ActionListener
-        ActionListener action_reserva = new ActionListener(){
+        ActionListener action_inicioseccion = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae){
                     JButton source = (JButton)ae.getSource();
                     if(iniciarseccion.getText()==source.getText()){
                         if(usuario_caja.getText().equals("") || contrasena_caja.getText().equals("") || (principal.tipo_usuario==true && codigoadmin_caja.getText().equals(""))){
+                            // Si es que no llena los campos para iniciar seccion se le arrojara un error
                             error_campo.setVisible(true);
                         }else{
                             error_campo.setVisible(false);
+                            // Si el usuario(ADMINISTRADOR) llena todos los campos para iniciar seccion comprobamos si es que el usuario es correcto
                             if(principal.tipo_usuario){
                                 if(validarusuario(usuario_caja.getText(), contrasena_caja.getText(), codigoadmin_caja.getText())){
-                                    // Si es que el usuario ingresa correctamente todos los campos
+                                    // Si es que el usuario ingresa correctamente todos los campos, se le abrira la ventana para que pueda ver el contenido de la empresa
                                     principal.v_inicio.setVisible(false);
                                     principal.v_principal.setVisible(true);
                                 }else{
+                                    // si es que el usuario ingresa incorrectamente(porque el usuario no existe), entonces se le arrojara un error 
                                     error_campo.setVisible(true);
                                 }
+                            // Si el usuario(USUARIO) llena todos los campos para iniciar seccion comprobamos si es que el usuario es correcto
                             }else{
                                 if(validarusuario(usuario_caja.getText(), contrasena_caja.getText(), null)){
-                                    // Si es que el usuario ingresa correctamente todos los campos
+                                    // Si es que el usuario ingresa correctamente todos los campos, se le abrira la ventana para que pueda ver el contenido de la empresa
                                     principal.v_inicio.setVisible(false);
                                     principal.v_principal.setVisible(true);
                                 }else{
+                                    // si es que el usuario ingresa incorrectamente(porque el usuario no existe), entonces se le arrojara un error 
                                     error_campo.setVisible(true);
                                 }
                             }
@@ -129,8 +142,7 @@ public class ventanainicio extends JFrame{
                     }
             }
         };
-        //salir.addActionListener(action_reserva);
-        iniciarseccion.addActionListener(action_reserva);
+        iniciarseccion.addActionListener(action_inicioseccion);
 
         // Logo Triviño
         JLabel logotrivino = new JLabel(new ImageIcon("imagenes\\LogoGrupoTrivino.png"));
@@ -147,23 +159,31 @@ public class ventanainicio extends JFrame{
         fondo_frame.setBounds(0,0,800,800);
         panel_inicio.add(fondo_frame);
     }
+    // Funcion que valida el usuario, ya sea ADMINISTRADOR o USUARIO
     public boolean validarusuario(String usuario, String contrasena, String codigoadmin){
+        // Buscaremos el indice de el arreglo de nombre de usuario
         int buscarindice = -1;
+        // La funcion retornara false si el usuario no es valido , de caso contrario retornara un true si es que es valido
         boolean usuariovalido=false;
+        // Buscamos en el arreglo de nombres de usuario, si es que encontramos el nombre de usuario guardamos el indice
         for(int i=0; i<principal.base_datos.getTamNU(); i++){
             if(principal.base_datos.getNombres_usuario()[i].equals(usuario)){
                 buscarindice=i;
             }
         }
-        System.out.println(buscarindice);
+        // Si es que el indice fue encontrado entonces validamos que sean correcto los otros datos(contraseña o codigo admin si es que este es ADMINISTRADOR)
         if(buscarindice!=-1){
+            // Si el usuario es ADMINISTRADOR
             if(principal.tipo_usuario==true){
+                // Si es que la contraseña y el codigo administrador es la correcta entonces el usuario es valido, de caso contrario no es valido
                 if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice]==null){
                     usuariovalido=false;
                 }else if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice].equals(codigoadmin)){
                     usuariovalido=true;
                 }
+            // Si el usuario es USUARIO
             }else{
+                // Si es que la contraseña es la correcta entonces el usuario es valido, de caso contrario no es valido
                 if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice]==null){
                     usuariovalido=true;
                 }else{

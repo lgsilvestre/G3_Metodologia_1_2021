@@ -1,5 +1,5 @@
 public class basedatos {
-    // Datos
+    // Datos en donde estaran los usuarios con sus respectivas contraseñas y codigo de administrador(si es que tienen)
     public String[] nombres_usuario={"AmparoLeiva01","JoseFlores02","AlvaroHerrera03","VictorCornejo04","PaulQuezada05","MiguelContardo06","PaoloAmaro07",
         "PatricioBustamante08","Mclovin09","RosaEspinoza10","ArmandoBarreda11","HumbertoSuazo12","JavieraCastro13","AlexisSanchez14","FelipeCerpa15","FernandaMorales16",
         "LionelMessi17","RafaelGonzalez18","RodrigoParedes19","JaimeLizana20","JohnCena21","JuanSierra22","LuisTorres23","FranklinClinton24","MiguelPiñera25","EduardoVargas26",
