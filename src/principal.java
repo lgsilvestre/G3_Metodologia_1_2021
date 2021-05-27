@@ -11,5 +11,7 @@ public class principal {
     public static void main(String[] args){
         v_inicio.setVisible(true);
         v_principal.setVisible(false);
+        v_principal.init_ventanaprincipal();
+        v_principal.iniciarcomponentes();
     }
 }

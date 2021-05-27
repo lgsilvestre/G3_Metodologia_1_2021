@@ -4,12 +4,9 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,21 +32,21 @@ public class ventanaprincipal extends JFrame{
     JLabel fondo_frame = new JLabel(new ImageIcon("imagenes//fondo_frame.jpg"));
         // Ajustes
     JButton ajustes = new JButton(new ImageIcon("imagenes//ajuste.png"));
-    
     // Componentes del buscar
         // Texto 
     JLabel busqueda= new JLabel();
-
     // Componentes de ajuste
         // Texto
     JLabel text_ajuste = new JLabel();
     JLabel text_tam_pant = new JLabel();
         // ComboBox
     JComboBox tam_pant = new JComboBox<>(new String[]{"800x800", "800x600"});
+    // Ancho y Largo del frame
+    public int ancho=800, largo=800;
 
-    public ventanaprincipal(){
+    public void init_ventanaprincipal(){
         // Tamaño de la ventana
-        this.setSize(800,800);
+        this.setSize(ancho,largo);
         
         this.setLocationRelativeTo(null);
         this.setTitle("Empresa Triviño LTDA");
@@ -58,6 +55,8 @@ public class ventanaprincipal extends JFrame{
 
         // Añadimos el panel a la ventana
         add(panel_principal);
+    }
+    public void iniciarcomponentes(){
         componentesprincipal();
     }
     private void componentesprincipal(){
@@ -250,12 +249,21 @@ public class ventanaprincipal extends JFrame{
                 switch (tam_pant.getSelectedIndex()) {
                     case 0:
                         System.out.println("800x800");
+                        ancho = 800;
+                        largo = 800;
+                        init_ventanaprincipal();
                         break;
                     case 1:
                         System.out.println("800x600");
+                        ancho = 800;
+                        largo = 600;
+                        init_ventanaprincipal();
                         break;
                     default:
                         System.out.println("800x800");
+                        ancho = 800;
+                        largo = 800;
+                        init_ventanaprincipal();
                         break;
                 }
             }
