@@ -26,8 +26,11 @@ public class ventanaprincipal extends JFrame{
     JLabel portadapajaroconlepra = new JLabel(new ImageIcon("imagenes_portada\\elpajaroconlepra.png"));
         // Botones
     JButton buscar = new JButton(new ImageIcon("imagenes//imagen_buscar.png"));
-    JButton siguiente = new JButton(new ImageIcon("imagenes//siguiente.png"));
-    JButton atras = new JButton(new ImageIcon("imagenes//atras.png"));
+    JButton siguiente_img = new JButton(new ImageIcon("imagenes//siguiente.png"));
+    JButton atras_img = new JButton(new ImageIcon("imagenes//atras.png"));
+    JButton atras_vent = new JButton("Atras");
+        // Action Listener de el boton atras
+    ActionListener action_atras_vent;
         // Fondo del frame
     JLabel fondo_frame = new JLabel(new ImageIcon("imagenes//fondo_frame.jpg"));
         // Ajustes
@@ -117,9 +120,9 @@ public class ventanaprincipal extends JFrame{
             }
         };buscar.addActionListener(actionbuscar);
  
-        siguiente.setBackground(Color.ORANGE);
-        siguiente.setBounds(700,300,40,40);
-        panel_principal.add(siguiente);
+        siguiente_img.setBackground(Color.ORANGE);
+        siguiente_img.setBounds(700,300,40,40);
+        panel_principal.add(siguiente_img);
         // Action para el boton siguiente
         ActionListener actionsiguiente = new ActionListener(){
             public void actionPerformed(ActionEvent ae){
@@ -133,11 +136,11 @@ public class ventanaprincipal extends JFrame{
                     portadaseleccionada=1;
                 }
             }
-        };siguiente.addActionListener(actionsiguiente);
+        };siguiente_img.addActionListener(actionsiguiente);
         // Boton atras(para las portadas de los videos)
-        atras.setBackground(Color.ORANGE);
-        atras.setBounds(70,300,40,40);
-        panel_principal.add(atras);
+        atras_img.setBackground(Color.ORANGE);
+        atras_img.setBounds(70,300,40,40);
+        panel_principal.add(atras_img);
         // Action para el boton atras
         ActionListener actionatras = new ActionListener(){
             public void actionPerformed(ActionEvent ae){
@@ -151,14 +154,15 @@ public class ventanaprincipal extends JFrame{
                     portadaseleccionada=1;
                 }
             }
-        };atras.addActionListener(actionatras);
-
+        };atras_img.addActionListener(actionatras);
         // Fondo del frame
         fondo_frame.setBounds(0,0,800,800);
+        fondo_frame.setVisible(true);
         panel_principal.add(fondo_frame);
+        System.out.print("");
     }
     public void invisible_componentesprincipal(){
-        // Se oculta todo para cambiar los componentes del frame
+        // Se oculta todo para cambiar los componentes del frame principal
             // Imagen portada potter principal
         portadapotter.setVisible(false);
             // Imagen portada el pajaro con lepra principal
@@ -166,17 +170,19 @@ public class ventanaprincipal extends JFrame{
             // Fondo del frame
         fondo_frame.setVisible(false);
             // Botones
-        siguiente.setVisible(false);
-        atras.setVisible(false);
+        siguiente_img.setVisible(false);
+        atras_img.setVisible(false);
         ajustes.setVisible(false);
         // Se muestran los componentes de busqueda
             // Texto
         busqueda.setVisible(true);
+        atras_vent.setVisible(true);
     }
     public void invisible_componentesbusqueda(){
         // Se ocultan todos los componentes de busqueda
              // Texto 
         busqueda.setVisible(false);
+        atras_vent.setVisible(false);
         // Se muestra todos los componentes de principal
             // Imagen portada potter principal
         portadapotter.setVisible(true);
@@ -185,8 +191,8 @@ public class ventanaprincipal extends JFrame{
             // Fondo del frame
         fondo_frame.setVisible(true);
             // Botones
-        siguiente.setVisible(true);
-        atras.setVisible(true);
+        siguiente_img.setVisible(true);
+        atras_img.setVisible(true);
         ajustes.setVisible(true);
             // Caja de busqueda
         buscar_caja.setVisible(true);
@@ -199,6 +205,7 @@ public class ventanaprincipal extends JFrame{
         text_ajuste.setVisible(false);
         text_tam_pant.setVisible(false);
         tam_pant.setVisible(false);
+        atras_vent.setVisible(false);
         // Se muestran los componentes de principal
             // Imagen portada potter principal
         portadapotter.setVisible(true);
@@ -207,8 +214,8 @@ public class ventanaprincipal extends JFrame{
             // Fondo del frame
         fondo_frame.setVisible(true);
             // Botones
-        siguiente.setVisible(true);
-        atras.setVisible(true);
+        siguiente_img.setVisible(true);
+        atras_img.setVisible(true);
     }
     public void componentesbusqueda(){
         // Texto 
@@ -217,6 +224,16 @@ public class ventanaprincipal extends JFrame{
         busqueda.setBounds(200,100,200,40);
         panel_principal.add(busqueda);
 
+        // Botones   
+        atras_vent.setBounds(200,600,100,40);
+        panel_principal.add(atras_vent);
+        // Action para el boton atras ventana
+        action_atras_vent = new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                invisible_componentesbusqueda();
+                invisible_componentesajuste();
+            }
+        };atras_vent.addActionListener(action_atras_vent);
         // Fondo del frame
         fondo_frame.setVisible(true);
         panel_principal.add(fondo_frame);
@@ -240,7 +257,17 @@ public class ventanaprincipal extends JFrame{
         text_tam_pant.setText("Tamaño de pantalla");
         text_tam_pant.setBounds(50,170,180,100);
         panel_principal.add(text_tam_pant);
-
+        
+        // Botones
+        atras_vent.setBounds(200,600,100,40);
+        panel_principal.add(atras_vent);
+        // Action para el boton atras ventana
+        action_atras_vent = new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                invisible_componentesbusqueda();
+                invisible_componentesajuste();
+            }
+        };atras_vent.addActionListener(action_atras_vent);
         // ComboBox en donde seleccionara el tamaño de el frame (NO FUNCIONAL)
         tam_pant.setBounds(200,200,100,40);
         tam_pant.addActionListener(new ActionListener() {
