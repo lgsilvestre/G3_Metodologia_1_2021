@@ -117,6 +117,7 @@ public class ventanaprincipal extends JFrame{
             public void actionPerformed(ActionEvent ae){
                 invisible_componentesprincipal();
                 componentesbusqueda();
+                principal.base_datos.getRegistrar_busqueda().add("");
             }
         };buscar.addActionListener(actionbuscar);
  

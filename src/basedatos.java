@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class basedatos {
     // Datos en donde estaran los usuarios con sus respectivas contraseñas y codigo de administrador(si es que tienen)
     public String[] nombres_usuario={"AmparoLeiva01","JoseFlores02","AlvaroHerrera03","VictorCornejo04","PaulQuezada05","MiguelContardo06","PaoloAmaro07",
@@ -9,14 +11,19 @@ public class basedatos {
         "18/07/2019","18/07/2019","28/04/2020","28/04/2020","28/04/2020","28/04/2020","28/04/2020","23/05/2021","23/05/2021","23/05/2021","23/05/2021","23/05/2021"}; 
     public String[] codigo_admin={null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
         null,null,null,null,"SergioLozano31ad","JuanVilchez32ad","MiguelSalas33ad","MarcelaRincon34ad","LuisSilvestre35ad"};
+    // POR MIENTRAS PARA REGISTRAR TODAS LAS BUSQUEDAS (ALMACENARA HASTA 1000 elementos)
+    ArrayList<String> registrar_busqueda = new ArrayList<String>();
     public basedatos(){}
     // Retornar Listas
     public String[] getNombres_usuario(){return nombres_usuario;}
     public String[] getContrasena_usuario(){return contrasena_usuario;}
     public String[] getCodigo_admin(){return codigo_admin;}
+    // ArrayList de las busquedas
+    public ArrayList<String> getRegistrar_busqueda(){return registrar_busqueda;}
 
     // Retornar tamaño de las listas
     public int getTamNU(){return nombres_usuario.length;}
     public int getTamCU(){return contrasena_usuario.length;}
     public int getTamCA(){return codigo_admin.length;}
+
 }
