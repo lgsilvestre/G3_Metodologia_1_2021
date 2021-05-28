@@ -258,6 +258,7 @@ public class ventanaprincipal extends JFrame{
         panel_principal.add(text_ajuste);
 
         text_tam_pant.setText("Tamaño de pantalla");
+        text_tam_pant.setForeground(Color.ORANGE);
         text_tam_pant.setBounds(50,170,180,100);
         panel_principal.add(text_tam_pant);
         
