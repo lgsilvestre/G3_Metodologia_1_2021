@@ -229,6 +229,7 @@ public class ventanaprincipal extends JFrame{
 
         // Botones   
         atras_vent.setBounds(200,500,100,40);
+        atras_vent.setBackground(Color.ORANGE);
         panel_principal.add(atras_vent);
         // Action para el boton atras ventana
         action_atras_vent = new ActionListener(){
@@ -264,6 +265,7 @@ public class ventanaprincipal extends JFrame{
         
         // Botones
         atras_vent.setBounds(200,500,100,40);
+        atras_vent.setBackground(Color.ORANGE);
         panel_principal.add(atras_vent);
         // Action para el boton atras ventana
         action_atras_vent = new ActionListener(){

@@ -59,7 +59,7 @@ public class ventanainicio extends JFrame{
         
         // Boton de inciar seccion
         JButton iniciarseccion = new JButton();
-        iniciarseccion.setText("Iniciar Seccion");
+        iniciarseccion.setText("Iniciar Sesión");
         iniciarseccion.setBounds(300,450,150,20);
         panel_inicio.add(iniciarseccion);
 
