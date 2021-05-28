@@ -50,10 +50,12 @@ public class ventanaprincipal extends JFrame{
     public void init_ventanaprincipal(){
         // Tamaño de la ventana
         this.setSize(ancho,largo);
-        
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Empresa Triviño LTDA");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // Icono de la Ventana
+        setIconImage(new ImageIcon("imagenes\\LogoGrupoTrivino.png").getImage());
         panel_principal.setLayout(null);
 
         // Añadimos el panel a la ventana
@@ -117,7 +119,7 @@ public class ventanaprincipal extends JFrame{
             public void actionPerformed(ActionEvent ae){
                 invisible_componentesprincipal();
                 componentesbusqueda();
-                principal.base_datos.getRegistrar_busqueda().add("");
+                principal.base_datos.getRegistrar_busqueda().add(buscar_caja.getText());
             }
         };buscar.addActionListener(actionbuscar);
  
@@ -226,7 +228,7 @@ public class ventanaprincipal extends JFrame{
         panel_principal.add(busqueda);
 
         // Botones   
-        atras_vent.setBounds(200,600,100,40);
+        atras_vent.setBounds(200,500,100,40);
         panel_principal.add(atras_vent);
         // Action para el boton atras ventana
         action_atras_vent = new ActionListener(){
@@ -260,7 +262,7 @@ public class ventanaprincipal extends JFrame{
         panel_principal.add(text_tam_pant);
         
         // Botones
-        atras_vent.setBounds(200,600,100,40);
+        atras_vent.setBounds(200,500,100,40);
         panel_principal.add(atras_vent);
         // Action para el boton atras ventana
         action_atras_vent = new ActionListener(){
@@ -269,26 +271,23 @@ public class ventanaprincipal extends JFrame{
                 invisible_componentesajuste();
             }
         };atras_vent.addActionListener(action_atras_vent);
-        // ComboBox en donde seleccionara el tamaño de el frame (NO FUNCIONAL)
+        // ComboBox en donde seleccionara el tamaño de el frame
         tam_pant.setBounds(200,200,100,40);
         tam_pant.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (tam_pant.getSelectedIndex()) {
                     case 0:
-                        System.out.println("800x800");
                         ancho = 800;
                         largo = 800;
                         init_ventanaprincipal();
                         break;
                     case 1:
-                        System.out.println("800x600");
                         ancho = 800;
                         largo = 600;
                         init_ventanaprincipal();
                         break;
                     default:
-                        System.out.println("800x800");
                         ancho = 800;
                         largo = 800;
                         init_ventanaprincipal();

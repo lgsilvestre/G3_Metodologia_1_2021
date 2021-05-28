@@ -18,11 +18,13 @@ public class ventanainicio extends JFrame{
     public ventanainicio(){
         // Tamaño por defecto de el frame
         this.setSize(800,800);
-        
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Empresa Triviño LTDA");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         panel_inicio.setLayout(null);
+        // Icono de la Ventana
+        setIconImage(new ImageIcon("imagenes\\LogoGrupoTrivino.png").getImage());
         // Añadimos el panel
         add(panel_inicio);
         // Inicializamos los componentes

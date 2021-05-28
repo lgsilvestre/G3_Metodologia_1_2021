@@ -29,11 +29,14 @@ public class reproductorvideo extends JFrame{
     Player reproductor;
     
     public reproductorvideo(){
+        this.setResizable(false);
         setTitle("Empresa Triviño LTDA");
         setSize(800,600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+        // Icono de la Ventana
+        setIconImage(new ImageIcon("imagenes\\LogoGrupoTrivino.png").getImage());
     }
     // FUNCIONAL //
     // EL PROBLEMA ES QUE SOLO REPRODUCE WAV //
