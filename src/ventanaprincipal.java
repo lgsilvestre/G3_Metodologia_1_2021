@@ -28,7 +28,7 @@ public class ventanaprincipal extends JFrame{
     JButton buscar = new JButton(new ImageIcon("imagenes//imagen_buscar.png"));
     JButton siguiente_img = new JButton(new ImageIcon("imagenes//siguiente.png"));
     JButton atras_img = new JButton(new ImageIcon("imagenes//atras.png"));
-    JButton atras_vent = new JButton("Atras");
+    JButton atras_vent = new JButton("Atrás");
         // Action Listener de el boton atras
     ActionListener action_atras_vent;
         // Fondo del frame
