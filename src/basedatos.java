@@ -4,7 +4,7 @@ public class basedatos {
     // Datos en donde estaran los usuarios con sus respectivas contraseñas y codigo de administrador(si es que tienen)
     public String[] nombres_usuario={"AmparoLeiva01","JoseFlores02","AlvaroHerrera03","VictorCornejo04","PaulQuezada05","MiguelContardo06","PaoloAmaro07",
         "PatricioBustamante08","Mclovin09","RosaEspinoza10","ArmandoBarreda11","HumbertoSuazo12","JavieraCastro13","AlexisSanchez14","FelipeCerpa15","FernandaMorales16",
-        "LionelMessi17","RafaelGonzalez18","RodrigoParedes19","JaimeLizana20","JohnCena21","JuanSierra22","LuisTorres23","FranklinClinton24","MiguelPiñera25","EduardoVargas26",
+        "LionelMessi17","RafaelGonzalez18","RodrigoParedes19","JaimeLizana20","JohnCena21","JuanSierra22","LuisTorres23","FranklinClinton24","MiguelPinera25","EduardoVargas26",
         "KennyOmega27","AndreaCruz28","PabloUribe29","DavidLabra30","SergioLozano31","JuanVilchez32","MiguelSalas33","MarcelaRincon34","LuisSilvestre35"};
     public String[] contrasena_usuario={"07/11/2006","07/11/2006","07/11/2006","07/11/2006","07/11/2006","07/11/2006","23/05/2008","23/05/2008","23/05/2008","23/05/2008",
         "01/09/2010","01/09/2010","01/09/2010","01/09/2010","15/04/2012","15/04/2012","15/04/2012","15/04/2012","15/04/2012","18/07/2019","18/07/2019","18/07/2019","18/07/2019",
