@@ -6,10 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/customizer.jar"/>
-	<classpathentry kind="lib" path="lib/jmf.jar"/>
-	<classpathentry kind="lib" path="lib/mediaplayer.jar"/>
-	<classpathentry kind="lib" path="lib/multiplayer.jar"/>
-	<classpathentry kind="lib" path="lib/sound.jar"/>
+	<classpathentry kind="lib" path="lib/jna-3.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/platform-3.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/vlcj-3.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

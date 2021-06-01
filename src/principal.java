@@ -6,12 +6,12 @@ public class principal {
     public static ventanainicio v_inicio = new ventanainicio();
     public static ventanaprincipal v_principal = new ventanaprincipal();
     public static basedatos base_datos = new basedatos(); 
-        // Ventana de reproductor de  video (ESTA EN PRUEBA)
-    //public static reproductorvideo reproductor_video = new reproductorvideo(); 
+    public static reproductorvideo reproductor_video = new reproductorvideo(); 
     public static void main(String[] args){
-        v_inicio.setVisible(true);
+        /*v_inicio.setVisible(true);
         v_principal.setVisible(false);
         v_principal.init_ventanaprincipal();
-        v_principal.iniciarcomponentes();
+        v_principal.iniciarcomponentes();*/
+        reproductor_video.setVisible(true);
     }
 }
