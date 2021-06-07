@@ -183,7 +183,7 @@ public class ventanainicio extends JFrame{
         boolean usuariovalido=false;
         // Buscamos en el arreglo de nombres de usuario, si es que encontramos el nombre de usuario guardamos el indice
         for(int i=0; i<principal.base_datos.getTamNU(); i++){
-            if(principal.base_datos.getNombres_usuario()[i].equals(usuario)){
+            if(principal.base_datos.getNombres_usuario().get(i).equals(usuario)){
                 buscarindice=i;
             }
         }
@@ -192,15 +192,15 @@ public class ventanainicio extends JFrame{
             // Si el usuario es ADMINISTRADOR
             if(principal.tipo_usuario==true){
                 // Si es que la contraseña y el codigo administrador es la correcta entonces el usuario es valido, de caso contrario no es valido
-                if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice]==null){
+                if(principal.base_datos.getContrasena_usuario().get(buscarindice).equals(contrasena) && principal.base_datos.getCodigo_admin().get(buscarindice).equals("null")){
                     usuariovalido=false;
-                }else if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice].equals(codigoadmin)){
+                }else if(principal.base_datos.getContrasena_usuario().get(buscarindice).equals(contrasena) && principal.base_datos.getCodigo_admin().get(buscarindice).equals(codigoadmin)){
                     usuariovalido=true;
                 }
             // Si el usuario es USUARIO
             }else{
                 // Si es que la contraseña es la correcta entonces el usuario es valido, de caso contrario no es valido
-                if(principal.base_datos.getContrasena_usuario()[buscarindice].equals(contrasena) && principal.base_datos.getCodigo_admin()[buscarindice]==null){
+                if(principal.base_datos.getContrasena_usuario().get(buscarindice).equals(contrasena) && principal.base_datos.getCodigo_admin().get(buscarindice).equals("null")){
                     usuariovalido=true;
                 }else{
                     usuariovalido=false;

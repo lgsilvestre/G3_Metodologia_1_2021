@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ventanaprincipal extends JFrame{
+    // Panel de la ventana Principal
     private JPanel panel_principal = new JPanel();
     private int portadaseleccionada=1;
     // Componentes del principal
@@ -59,12 +60,16 @@ public class ventanaprincipal extends JFrame{
         // Icono de la Ventana
         setIconImage(new ImageIcon("imagenes//Frame//LogoGrupoTrivino.png").getImage());
         panel_principal.setLayout(null);
-
         // Añadimos el panel a la ventana
         add(panel_principal);
     }
     public void iniciarcomponentes(){
         componentesprincipal();
+
+        // Fondo del Frame
+        fondo_frame.setBounds(0,0,800,800);
+        fondo_frame.setVisible(true);
+        panel_principal.add(fondo_frame);
     }
     private void componentesprincipal(){
         // Cajas de texto
@@ -121,7 +126,7 @@ public class ventanaprincipal extends JFrame{
             public void actionPerformed(ActionEvent ae){
                 invisible_componentesprincipal();
                 componentesbusqueda();
-                principal.base_datos.getRegistrar_busqueda().add(buscar_caja.getText());
+                //principal.base_datos.getRegistrar_busqueda().add(buscar_caja.getText());
             }
         };buscar.addActionListener(actionbuscar);
  
@@ -164,7 +169,6 @@ public class ventanaprincipal extends JFrame{
         fondo_frame.setBounds(0,0,800,800);
         fondo_frame.setVisible(true);
         panel_principal.add(fondo_frame);
-        System.out.print("");
     }
     public void invisible_componentesprincipal(){
         // Se oculta todo para cambiar los componentes del frame principal
