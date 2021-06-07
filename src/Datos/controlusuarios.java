@@ -132,7 +132,7 @@ public class controlusuarios extends JFrame{
                 // add row to the model
                 model.addRow(row);
             }
-        });``
+        });
         
         // button remove row
         btnDelete.addActionListener(new ActionListener(){
