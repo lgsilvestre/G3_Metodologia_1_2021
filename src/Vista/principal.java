@@ -13,14 +13,14 @@ public class principal {
     public static reproductorvideo reproductor_video = new reproductorvideo(); 
     public static controlusuarios control_usuario = new controlusuarios();
     public static void main(String[] args){
-        v_inicio.setVisible(true);
-        v_principal.setVisible(false);
-        v_principal.init_ventanaprincipal();
-        v_principal.iniciarcomponentes();
+       // v_inicio.setVisible(true);
+        //v_principal.setVisible(false);
+        //v_principal.init_ventanaprincipal();
+        //v_principal.iniciarcomponentes();
         //reproductor_video.setVisible(true);
         //base_datos.ingresarUsuario("JUAN", "123", "null");
         //base_datos.imprimir();
         //System.exit(0);
-        //control_usuario.setVisible(true);
+        control_usuario.setVisible(true);
     }
 }

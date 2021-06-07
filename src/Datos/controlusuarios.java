@@ -13,6 +13,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import Vista.principal;
+
 import java.util.Scanner;
 import java.io.File;
 
@@ -125,11 +128,11 @@ public class controlusuarios extends JFrame{
                 row[0] = textNombre.getText();
                 row[1] = textContrasena.getText();
                 row[2] = textCodigoAdm.getText();
-                
+                principal.base_datos.ingresarUsuario(textNombre.getText(), textContrasena.getText(), textCodigoAdm.getText());
                 // add row to the model
                 model.addRow(row);
             }
-        });
+        });``
         
         // button remove row
         btnDelete.addActionListener(new ActionListener(){
