@@ -92,7 +92,7 @@ public class basedatos {
     }
     public void eliminarUsuarioExistentes(String lineToRemove){ 
         Scanner in = new Scanner(System.in);
-        while(true){
+        /*while(true){
             if (lineToRemove.length() < 5){
                 lineToRemove = in.next();
                 continue;
@@ -100,7 +100,7 @@ public class basedatos {
                 break;
             }
         }
-        in.close();
+        in.close();*/
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f));
             BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
