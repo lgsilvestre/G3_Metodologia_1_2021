@@ -120,7 +120,6 @@ public class basedatos {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f_auxiliar));
             BufferedWriter writer = new BufferedWriter(new FileWriter(f));
@@ -137,6 +136,7 @@ public class basedatos {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
         borrarDatosListas();
         leerUsuarios();
     }

@@ -26,6 +26,7 @@ public class controlusuarios extends JFrame{
     JPanel otropanel = new JPanel();
     Object[] row = new Object[3];
     DefaultTableModel model = new DefaultTableModel();
+    String eliminar="";
     public controlusuarios(){
         // Tamaño de la ventana
         this.setSize(900,800);
@@ -142,9 +143,9 @@ public class controlusuarios extends JFrame{
                 int i = table.getSelectedRow();
                 if(i >= 0){
                     // remove a row from jtable
-                    principal.base_datos.eliminarUsuarioExistentes(model.getValueAt(i, 0).toString());
+                    eliminar = model.getValueAt(i, 0).toString();
                     model.removeRow(i);
-                    
+                    principal.base_datos.eliminarUsuarioExistentes(eliminar);
                 }
                 else{
                     System.out.println("Delete Error");
