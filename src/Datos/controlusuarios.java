@@ -15,10 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Vista.principal;
-
 import java.util.Scanner;
 import java.io.File;
-
 import javax.swing.border.TitledBorder;
 import javax.swing.BorderFactory;
 
@@ -144,7 +142,9 @@ public class controlusuarios extends JFrame{
                 int i = table.getSelectedRow();
                 if(i >= 0){
                     // remove a row from jtable
+                    principal.base_datos.eliminarUsuarioExistentes(model.getValueAt(i, 0).toString());
                     model.removeRow(i);
+                    
                 }
                 else{
                     System.out.println("Delete Error");
@@ -176,9 +176,10 @@ public class controlusuarios extends JFrame{
                 int i = table.getSelectedRow();
                 if(i >= 0) 
                 {
-                   model.setValueAt(textNombre.getText(), i, 0);
-                   model.setValueAt(textContrasena.getText(), i, 1);
-                   model.setValueAt(textCodigoAdm.getText(), i, 2);
+                    principal.base_datos.modificarUsuariosExistentes(model.getValueAt(i, 0).toString(), textNombre.getText(), textContrasena.getText(), textCodigoAdm.getText());
+                    model.setValueAt(textNombre.getText(), i, 0);
+                    model.setValueAt(textContrasena.getText(), i, 1);
+                    model.setValueAt(textCodigoAdm.getText(), i, 2);
                 }
                 else{
                     System.out.println("Update Error");

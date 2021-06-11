@@ -18,9 +18,10 @@ public class principal {
         //v_principal.init_ventanaprincipal();
         //v_principal.iniciarcomponentes();
         //reproductor_video.setVisible(true);
-        //base_datos.ingresarUsuario("JUAN", "123", "null");
+        //base_datos.modificarUsuariosExistentes("LuisSilvestre35","LuisSilvestre84", "23/05/2030" ,"LuisSilvestre84ad");
         //base_datos.imprimir();
         //System.exit(0);
         control_usuario.setVisible(true);
+
     }
 }

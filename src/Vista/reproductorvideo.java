@@ -184,7 +184,6 @@ public class reproductorvideo extends javax.swing.JFrame {
 
     }//end: constructor
 
-    @SuppressWarnings("unchecked")
     private void componentes() {
         java.awt.GridBagConstraints gridBagConstraints;
 

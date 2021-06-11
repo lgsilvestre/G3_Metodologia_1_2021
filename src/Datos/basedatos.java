@@ -2,13 +2,12 @@ package Datos;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class basedatos {
     // Datos en donde estaran los usuarios con sus respectivas contraseñas y codigo de administrador(si es que tienen)
@@ -32,6 +31,7 @@ public class basedatos {
     
     // Leemos el txt donde se encontraran todos los nombres, contraseñas y codigo de admin
     File f = new File("src//Datos//datos.txt");
+    File f_auxiliar = new File("src//Datos//auxiliar.txt");
 
     // Constructor
     public basedatos(){
@@ -73,7 +73,7 @@ public class basedatos {
         {
             fw=new FileWriter(f, true);
             pw = new PrintWriter(fw);
-            pw.print("\n"+nombreU+ " "+contrasenaU+" "+codigoAdmn);
+            pw.println(nombreU+ " "+contrasenaU+" "+codigoAdmn);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -84,12 +84,68 @@ public class basedatos {
            if (null != fw)
               fw.close();
            } catch (Exception e2) {
-              e2.printStackTrace();
+              e2.printStackTrace(); 
            }
         }
-
+        borrarDatosListas();
+        leerUsuarios();
     }
+    public void eliminarUsuarioExistentes(String lineToRemove){ 
+        Scanner in = new Scanner(System.in);
+        while(true){
+            if (lineToRemove.length() < 5){
+                lineToRemove = in.next();
+                continue;
+            } else{
+                break;
+            }
+        }
+        in.close();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(f));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
 
+            String currentLine;
+
+            while((currentLine = reader.readLine()) != null) {                        
+                if(currentLine.contains(lineToRemove)){ 
+                    continue;
+                }
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }  
+
+            writer.close();
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(f_auxiliar));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+
+            String currentLine;
+
+            while((currentLine = reader.readLine()) != null) { 
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }  
+
+            writer.close();
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        borrarDatosListas();
+        leerUsuarios();
+    }
+    public void modificarUsuariosExistentes(String nombre_usuario, String nombre_usuario_Modificado, String contrasena_usuario_Modificado, String codigo_Admin_Modificado){
+        eliminarUsuarioExistentes(nombre_usuario);
+        ingresarUsuario(nombre_usuario_Modificado, contrasena_usuario_Modificado, codigo_Admin_Modificado);
+        borrarDatosListas();
+        leerUsuarios();
+    }
     // Imprimir TODO de las listas (PARA PRUEBA)
     public void imprimir(){
         for(int i =0; i<nombres_usuario.size(); i++){
@@ -102,11 +158,16 @@ public class basedatos {
     public ArrayList<String> getCodigo_admin(){return codigo_admin;}
     
     // Retornar Tamaño de las Listas
-
     public int getTamNU(){return nombres_usuario.size();}
     public int getTamCU(){return contrasena_usuario.size();}
     public int getTamCA(){return codigo_admin.size();}
     
+    // Borrar los datos de las listas
+    public void borrarDatosListas(){
+        nombres_usuario = new ArrayList<String>();
+        contrasena_usuario = new ArrayList<String>();
+        codigo_admin = new ArrayList<String>();
+    }
     // ArrayList de las busquedas (ES IRRELEVANTE SI FUNCIONA O NO)
     //public ArrayList<String> getRegistrar_busqueda(){return registrar_busqueda;}
 
