@@ -17,9 +17,8 @@ import javax.swing.event.ChangeListener;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 
-
 public class reproductorvideo extends javax.swing.JFrame {
-	// Declaracion de Variables
+    // Declaracion de Variables
     private javax.swing.JToggleButton btnMute;
     private javax.swing.JButton btnPause;
     private javax.swing.JButton btnPlay;
@@ -32,127 +31,124 @@ public class reproductorvideo extends javax.swing.JFrame {
     private javax.swing.JSlider sldProgress;
     private javax.swing.JSlider sldVolumen;
     // Termino de declaracion de variables
-    
+
     private EmbeddedMediaPlayerComponent player;
-    private String file;
-    
-    static{
+    static {
         NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:/Program Files/VideoLAN/VLC/");
 
         Native.loadLibrary(RuntimeUtil.getLibVlcLibraryName(), LibVlc.class);
     }
-    //bandera para controlar la reproduccion de video y el cambio en el avance de video
+    // bandera para controlar la reproduccion de video y el cambio en el avance de
+    // video
     private boolean band = true;
 
     public reproductorvideo() {
         componentes();
-        setSize(800,800);
-        setTitle( "Triviño LTDA");//nombre de reproductor
-        setResizable(false);//No sea modificable el frame
-        setLocationRelativeTo(null);//centrar en pantalla
+        setSize(800, 800);
+        setTitle("Triviño LTDA");// nombre de reproductor
+        setResizable(false);// No sea modificable el frame
+        setLocationRelativeTo(null);// centrar en pantalla
         // Icono de la Ventana
         setIconImage(new ImageIcon("imagenes\\LogoGrupoTrivino.png").getImage());
         player = new EmbeddedMediaPlayerComponent();
-        //se añade reproductor 
-        jPanel2.add(player);        
-        player.setSize(jPanel2.getSize());                
-        player.setVisible(true);                
-        //slider control de volumen
+    }// end: constructor
+
+    public void ejecutarReproduccion(String file) {
+        // se añade reproductor
+        jPanel2.add(player);
+        player.setSize(jPanel2.getSize());
+        player.setVisible(true);
+        // slider control de volumen
         sldVolumen.setMinimum(0);
         sldVolumen.setMaximum(100);
-        //slider control progreso
+        // slider control progreso
         sldProgress.setMinimum(0);
         sldProgress.setMaximum(100);
         sldProgress.setValue(0);
         sldProgress.setEnabled(false);
-        
-        file = "videos//elpajarrako.mp4";                                     
+        System.out.println(file);
         btnPlay.doClick();
-
-        //Control de reproduccion
+        // Control de reproduccion
         btnPlay.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                if (file!=null){                    
-                    player.getMediaPlayer().playMedia(file);    
-                    sldVolumen.setValue(  player.getMediaPlayer().getVolume() );
+            public void actionPerformed(ActionEvent e) {
+                if (file != null) {
+                    player.getMediaPlayer().playMedia(file);
+                    sldVolumen.setValue(player.getMediaPlayer().getVolume());
                     sldProgress.setEnabled(true);
                 }
             }
-        }); 
+        });
 
-        //Control de pausa
+        // Control de pausa
         btnPause.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
-               player.getMediaPlayer().setPause( player.getMediaPlayer().isPlaying()?true:false );                                   
+            public void actionPerformed(ActionEvent e) {
+                player.getMediaPlayer().setPause(player.getMediaPlayer().isPlaying() ? true : false);
             }
-        }); 
+        });
 
-        //Control detener reproduccion
+        // Control detener reproduccion
         btnStop.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
-              player.getMediaPlayer().stop();   
-              sldProgress.setValue(0);
-              sldProgress.setEnabled(false);
-              setTitle("VLCJ Player");
-            }
-        }); 
-
-       //Control silenciar 
-       btnMute.addActionListener(new ActionListener() {            
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                AbstractButton abstractButton = (AbstractButton) actionEvent.getSource();                
-                player.getMediaPlayer().mute( abstractButton.getModel().isSelected() );                
+            public void actionPerformed(ActionEvent e) {
+                player.getMediaPlayer().stop();
+                sldProgress.setValue(0);
+                sldProgress.setEnabled(false);
+                setTitle("VLCJ Player");
             }
         });
 
-        //Control slider cambiar volumen
-        sldVolumen.addChangeListener(new ChangeListener(){
+        // Control silenciar
+        btnMute.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                AbstractButton abstractButton = (AbstractButton) actionEvent.getSource();
+                player.getMediaPlayer().mute(abstractButton.getModel().isSelected());
+            }
+        });
+
+        // Control slider cambiar volumen
+        sldVolumen.addChangeListener(new ChangeListener() {
 
             @Override
             public void stateChanged(ChangeEvent e) {
-                Object source = e.getSource();                                
-                player.getMediaPlayer().setVolume( ((JSlider) source).getValue() );
-            }            
+                Object source = e.getSource();
+                player.getMediaPlayer().setVolume(((JSlider) source).getValue());
+            }
         });
 
-        //Listener de reproductor para mostrar el progreso en la reproduccion del video 
+        // Listener de reproductor para mostrar el progreso en la reproduccion del video
         player.getMediaPlayer().addMediaPlayerEventListener(new MediaPlayerEventAdapter() {
 
             @Override
-            public void positionChanged(MediaPlayer mp, float pos)
-            {
-                if(band){
-                    int value = Math.min(100, Math.round(pos * 100.0f));            
-                    sldProgress.setValue(value);                                                    
+            public void positionChanged(MediaPlayer mp, float pos) {
+                if (band) {
+                    int value = Math.min(100, Math.round(pos * 100.0f));
+                    sldProgress.setValue(value);
                 }
             }
 
             @Override
-            public void finished(MediaPlayer mediaPlayer){
+            public void finished(MediaPlayer mediaPlayer) {
 
             }
 
         });
 
-        //Listener para el slider progress
-        sldProgress.addMouseListener(new MouseListener(){
+        // Listener para el slider progress
+        sldProgress.addMouseListener(new MouseListener() {
 
             @Override
-            public void mouseClicked(MouseEvent e) {}
+            public void mouseClicked(MouseEvent e) {
+            }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                band= false;
+                band = false;
             }
 
             @Override
@@ -161,28 +157,29 @@ public class reproductorvideo extends javax.swing.JFrame {
             }
 
             @Override
-            public void mouseEntered(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+            }
 
             @Override
-            public void mouseExited(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {
+            }
 
         });
 
-        //Control para cambiar a posicion de reproduccion
-        sldProgress.addChangeListener(new ChangeListener(){
+        // Control para cambiar a posicion de reproduccion
+        sldProgress.addChangeListener(new ChangeListener() {
 
             @Override
             public synchronized void stateChanged(ChangeEvent e) {
-                if( !band ){
-                    Object source = e.getSource();                                
-                    float np = ((JSlider) source).getValue() / 100f;                    
-                    player.getMediaPlayer().setPosition(np);    
+                if (!band) {
+                    Object source = e.getSource();
+                    float np = ((JSlider) source).getValue() / 100f;
+                    player.getMediaPlayer().setPosition(np);
                 }
 
-            }            
+            }
         });
-
-    }//end: constructor
+    }
 
     private void componentes() {
         java.awt.GridBagConstraints gridBagConstraints;
