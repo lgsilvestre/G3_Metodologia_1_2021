@@ -3,12 +3,6 @@ package Datos;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class basedatos {
     // Datos de los usuarios y los videos

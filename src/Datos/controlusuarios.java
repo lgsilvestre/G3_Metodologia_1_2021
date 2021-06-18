@@ -3,6 +3,7 @@ package Datos;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionEvent;
@@ -154,6 +155,7 @@ public class controlusuarios extends JFrame {
                 ingresarUsuario(textNombre.getText(), textContrasena.getText(), textCodigoAdm.getText());
                 // add row to the model
                 model.addRow(row);
+                JOptionPane.showMessageDialog(null, "Accion Realizada");
             }
         });
 
@@ -170,8 +172,9 @@ public class controlusuarios extends JFrame {
                     eliminar = model.getValueAt(i, 0).toString();
                     model.removeRow(i);
                     eliminarUsuarioExistentes(eliminar);
+                    JOptionPane.showMessageDialog(null, "Accion Realizada");
                 } else {
-                    System.out.println("Delete Error");
+                    JOptionPane.showMessageDialog(null, "Accion NO Realizada");
                 }
             }
         });
@@ -184,10 +187,11 @@ public class controlusuarios extends JFrame {
 
                 // i = the index of the selected row
                 int i = table.getSelectedRow();
-
-                textNombre.setText(model.getValueAt(i, 0).toString());
-                textContrasena.setText(model.getValueAt(i, 1).toString());
-                textCodigoAdm.setText(model.getValueAt(i, 2).toString());
+                if (i >= 0) {
+                    textNombre.setText(model.getValueAt(i, 0).toString());
+                    textContrasena.setText(model.getValueAt(i, 1).toString());
+                    textCodigoAdm.setText(model.getValueAt(i, 2).toString());
+                }
             }
         });
 
@@ -204,8 +208,9 @@ public class controlusuarios extends JFrame {
                     model.setValueAt(textNombre.getText(), i, 0);
                     model.setValueAt(textContrasena.getText(), i, 1);
                     model.setValueAt(textCodigoAdm.getText(), i, 2);
+                    JOptionPane.showMessageDialog(null, "Accion Realizada");
                 } else {
-                    System.out.println("Update Error");
+                    JOptionPane.showMessageDialog(null, "Accion NO Realizada");
                 }
             }
         });
@@ -278,7 +283,7 @@ public class controlusuarios extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        in.close();
         borrarDatosListas();
         principal.base_datos.leerUsuarios();
         principal.base_datos.imprimir();

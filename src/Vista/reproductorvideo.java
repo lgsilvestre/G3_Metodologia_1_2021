@@ -23,6 +23,7 @@ public class reproductorvideo extends javax.swing.JFrame {
     private javax.swing.JButton btnPause;
     private javax.swing.JButton btnPlay;
     private javax.swing.JButton btnStop;
+    private javax.swing.JButton btnBack;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -111,6 +112,16 @@ public class reproductorvideo extends javax.swing.JFrame {
             }
         });
 
+        // Control atras
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                principal.reproductor_video.setVisible(false);
+                btnStop.doClick();
+                principal.buscador_videos.setVisible(true);
+            }
+        });
+
         // Control slider cambiar volumen
         sldVolumen.addChangeListener(new ChangeListener() {
 
@@ -191,6 +202,7 @@ public class reproductorvideo extends javax.swing.JFrame {
         btnPlay = new javax.swing.JButton();
         btnPause = new javax.swing.JButton();
         btnStop = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         btnMute = new javax.swing.JToggleButton();
         sldVolumen = new javax.swing.JSlider();
         jPanel2 = new javax.swing.JPanel();
@@ -238,6 +250,14 @@ public class reproductorvideo extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(btnMute, gridBagConstraints);
+
+        btnBack.setText("Atras");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel4.add(btnBack, gridBagConstraints);
 
         sldVolumen.setPreferredSize(new java.awt.Dimension(100, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();

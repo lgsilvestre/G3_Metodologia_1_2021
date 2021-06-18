@@ -12,47 +12,45 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ventanaprincipal extends JFrame{
+public class ventanaprincipal extends JFrame {
     // Panel de la ventana Principal
     private JPanel panel_principal = new JPanel();
-    private int portadaseleccionada=1;
+    private int portadaseleccionada = 1;
     // Componentes del principal
-        // Cajas de texto
-    JTextField buscar_caja= new JTextField();
-        // Logo Triviño
-    JButton logotrivino = new JButton(new ImageIcon("imagenes//Frame//LogoGrupoTrivino_pagina.png"));
-        // Imagen usuario (por mientras)
-    JLabel imagen_usuario = new JLabel(new ImageIcon("imagenes//Frame//foto_usuario.png"));
-        // Imagen portada potter principal
-    JLabel portadapotter = new JLabel(new ImageIcon("imagenes//Portada//potter.jpg"));
-        // Imagen portada el pajaro con lepra principal
-    JLabel portadapajaroconlepra = new JLabel(new ImageIcon("imagenes//Portada//elpajaroconlepra.png"));
-        // Botones
-    JButton buscar = new JButton(new ImageIcon("imagenes//Frame//imagen_buscar.png"));
-    JButton siguiente_img = new JButton(new ImageIcon("imagenes//Frame//siguiente.png"));
-    JButton atras_img = new JButton(new ImageIcon("imagenes//Frame//atras.png"));
-    JButton atras_vent = new JButton("Atrás");
-        // Action Listener de el boton atras
-    ActionListener action_atras_vent;
-        // Fondo del frame
-    JLabel fondo_frame = new JLabel(new ImageIcon("imagenes//Frame//fondo_frame.jpg"));
-        // Ajustes
-    JButton ajustes = new JButton(new ImageIcon("imagenes//Frame//ajuste.png"));
+    // Cajas de texto
+    public JTextField buscar_caja = new JTextField();
+    // Logo Triviño
+    public JButton logotrivino = new JButton(new ImageIcon("imagenes//Frame//LogoGrupoTrivino_pagina.png"));
+    // Imagen usuario (por mientras)
+    public JLabel imagen_usuario = new JLabel(new ImageIcon("imagenes//Frame//foto_usuario.png"));
+    // Imagen portada potter principal
+    public JLabel portadapotter = new JLabel(new ImageIcon("imagenes//Portada//potter.jpg"));
+    // Imagen portada el pajaro con lepra principal
+    public JLabel portadapajaroconlepra = new JLabel(new ImageIcon("imagenes//Portada//elpajaroconlepra.png"));
+    // Botones
+    public JButton buscar = new JButton(new ImageIcon("imagenes//Frame//imagen_buscar.png"));
+    public JButton siguiente_img = new JButton(new ImageIcon("imagenes//Frame//siguiente.png"));
+    public JButton atras_img = new JButton(new ImageIcon("imagenes//Frame//atras.png"));
+    public JButton atras_vent = new JButton("Atrás");
+    // Action Listener de el boton atras
+    public ActionListener action_atras_vent;
+    // Ajustes
+    public JButton ajustes = new JButton(new ImageIcon("imagenes//Frame//ajuste.png"));
     // Componentes del buscar
-        // Texto 
-    JLabel busqueda= new JLabel();
+    // Texto
+    public JLabel busqueda = new JLabel();
     // Componentes de ajuste
-        // Texto
-    JLabel text_ajuste = new JLabel();
-    JLabel text_tam_pant = new JLabel();
-        // ComboBox
-    JComboBox tam_pant = new JComboBox<>(new String[]{"800x800", "800x600"});
+    // Texto
+    public JLabel text_ajuste = new JLabel();
+    public JLabel text_tam_pant = new JLabel();
+    // ComboBox
+    public JComboBox tam_pant = new JComboBox<>(new String[] { "800x800", "800x600" });
     // Ancho y Largo del frame
-    public int ancho=800, largo=800;
+    public int ancho = 800, largo = 800;
 
-    public void init_ventanaprincipal(){
+    public void init_ventanaprincipal() {
         // Tamaño de la ventana
-        this.setSize(ancho,largo);
+        this.setSize(ancho, largo);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Empresa Triviño LTDA");
@@ -60,195 +58,191 @@ public class ventanaprincipal extends JFrame{
         // Icono de la Ventana
         setIconImage(new ImageIcon("imagenes//Frame//LogoGrupoTrivino.png").getImage());
         panel_principal.setLayout(null);
+        // Fondo del Frame
+        panel_principal.setBackground(Color.black);
         // Añadimos el panel a la ventana
         add(panel_principal);
     }
-    public void iniciarcomponentes(){
-        componentesprincipal();
 
-        // Fondo del Frame
-        fondo_frame.setBounds(0,0,800,800);
-        fondo_frame.setVisible(true);
-        panel_principal.add(fondo_frame);
+    public void iniciarcomponentes() {
+        componentesprincipal();
     }
-    private void componentesprincipal(){
+
+    private void componentesprincipal() {
         // Cajas de texto
-        buscar_caja.setBounds(200,60,400,30);
+        buscar_caja.setBounds(200, 60, 400, 30);
         buscar_caja.setBackground(Color.ORANGE);
         panel_principal.add(buscar_caja);
 
         // Ajustes
-        ajustes.setBounds(723,10,30,30);
+        ajustes.setBounds(723, 10, 30, 30);
         ajustes.setBackground(Color.ORANGE);
         panel_principal.add(ajustes);
-        ActionListener actionajustes= new ActionListener(){
-            public void actionPerformed(ActionEvent ae){
+        ActionListener actionajustes = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
                 invisible_componentesprincipal();
                 componentesajustes();
 
             }
-        };ajustes.addActionListener(actionajustes);
+        };
+        ajustes.addActionListener(actionajustes);
 
         // Logo Triviño
-        logotrivino.setBounds(0,0,150,113);
+        logotrivino.setBounds(0, 0, 150, 113);
         logotrivino.setBackground(Color.BLACK);
         logotrivino.setOpaque(false);
         logotrivino.setContentAreaFilled(false);
         logotrivino.setBorderPainted(false);
         panel_principal.add(logotrivino);
-        ActionListener actionprincipal = new ActionListener(){
-            public void actionPerformed(ActionEvent ae){
+        ActionListener actionprincipal = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
                 invisible_componentesbusqueda();
                 invisible_componentesajuste();
             }
-        };logotrivino.addActionListener(actionprincipal);
+        };
+        logotrivino.addActionListener(actionprincipal);
 
         // Imagen usuario (por mientras)
-        imagen_usuario.setBounds(680,20,100,93);
+        imagen_usuario.setBounds(680, 20, 100, 93);
         panel_principal.add(imagen_usuario);
 
         // Imagen portada principal
-        portadapotter.setBounds(150,150,500,300);
+        portadapotter.setBounds(150, 150, 500, 300);
         portadapotter.setVisible(true);
         panel_principal.add(portadapotter);
-        
+
         // Imagen portada principal
-        portadapajaroconlepra.setBounds(150,150,500,300);
+        portadapajaroconlepra.setBounds(150, 150, 500, 300);
         portadapajaroconlepra.setVisible(false);
         panel_principal.add(portadapajaroconlepra);
 
         // Botones
         buscar.setBackground(Color.ORANGE);
-        buscar.setBounds(610,60,30,30);
+        buscar.setBounds(610, 60, 30, 30);
         panel_principal.add(buscar);
         // Action para el boton buscar
-        ActionListener actionbuscar = new ActionListener(){
-            public void actionPerformed(ActionEvent ae){
-                invisible_componentesprincipal();
-                componentesbusqueda();
-                //principal.base_datos.getRegistrar_busqueda().add(buscar_caja.getText());
+        ActionListener actionbuscar = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                principal.buscador_videos.setVisible(true);
+                principal.buscador_videos.mostrarContenidoReproducible(buscar_caja.getText());
             }
-        };buscar.addActionListener(actionbuscar);
- 
+        };
+        buscar.addActionListener(actionbuscar);
+
         siguiente_img.setBackground(Color.ORANGE);
-        siguiente_img.setBounds(700,300,40,40);
+        siguiente_img.setBounds(700, 300, 40, 40);
         panel_principal.add(siguiente_img);
         // Action para el boton siguiente
-        ActionListener actionsiguiente = new ActionListener(){
-            public void actionPerformed(ActionEvent ae){
-                if(portadaseleccionada==1){
+        ActionListener actionsiguiente = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                if (portadaseleccionada == 1) {
                     portadapotter.setVisible(false);
                     portadapajaroconlepra.setVisible(true);
-                    portadaseleccionada=2;
-                }else{
+                    portadaseleccionada = 2;
+                } else {
                     portadapotter.setVisible(true);
                     portadapajaroconlepra.setVisible(false);
-                    portadaseleccionada=1;
+                    portadaseleccionada = 1;
                 }
             }
-        };siguiente_img.addActionListener(actionsiguiente);
+        };
+        siguiente_img.addActionListener(actionsiguiente);
         // Boton atras(para las portadas de los videos)
         atras_img.setBackground(Color.ORANGE);
-        atras_img.setBounds(70,300,40,40);
+        atras_img.setBounds(70, 300, 40, 40);
         panel_principal.add(atras_img);
         // Action para el boton atras
-        ActionListener actionatras = new ActionListener(){
-            public void actionPerformed(ActionEvent ae){
-                if(portadaseleccionada==1){
+        ActionListener actionatras = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                if (portadaseleccionada == 1) {
                     portadapotter.setVisible(false);
                     portadapajaroconlepra.setVisible(true);
-                    portadaseleccionada=2;
-                }else{
+                    portadaseleccionada = 2;
+                } else {
                     portadapotter.setVisible(true);
                     portadapajaroconlepra.setVisible(false);
-                    portadaseleccionada=1;
+                    portadaseleccionada = 1;
                 }
             }
-        };atras_img.addActionListener(actionatras);
-        // Fondo del frame
-        fondo_frame.setBounds(0,0,800,800);
-        fondo_frame.setVisible(true);
-        panel_principal.add(fondo_frame);
+        };
+        atras_img.addActionListener(actionatras);
     }
-    public void invisible_componentesprincipal(){
+
+    public void invisible_componentesprincipal() {
         // Se oculta todo para cambiar los componentes del frame principal
-            // Imagen portada potter principal
+        // Imagen portada potter principal
         portadapotter.setVisible(false);
-            // Imagen portada el pajaro con lepra principal
+        // Imagen portada el pajaro con lepra principal
         portadapajaroconlepra.setVisible(false);
-            // Fondo del frame
-        fondo_frame.setVisible(false);
-            // Botones
+        // Botones
         siguiente_img.setVisible(false);
         atras_img.setVisible(false);
         ajustes.setVisible(false);
         // Se muestran los componentes de busqueda
-            // Texto
+        // Texto
         busqueda.setVisible(true);
         atras_vent.setVisible(true);
     }
-    public void invisible_componentesbusqueda(){
+
+    public void invisible_componentesbusqueda() {
         // Se ocultan todos los componentes de busqueda
-             // Texto 
+        // Texto
         busqueda.setVisible(false);
         atras_vent.setVisible(false);
         // Se muestra todos los componentes de principal
-            // Imagen portada potter principal
+        // Imagen portada potter principal
         portadapotter.setVisible(true);
-            // Imagen portada el pajaro con lepra principal
+        // Imagen portada el pajaro con lepra principal
         portadapajaroconlepra.setVisible(true);
-            // Fondo del frame
-        fondo_frame.setVisible(true);
-            // Botones
+        // Botones
         siguiente_img.setVisible(true);
         atras_img.setVisible(true);
         ajustes.setVisible(true);
-            // Caja de busqueda
+        // Caja de busqueda
         buscar_caja.setVisible(true);
         buscar.setVisible(true);
 
     }
-    public void invisible_componentesajuste(){
+
+    public void invisible_componentesajuste() {
         // Se ocultan todos los componentes de ajuste
-            // Texto
+        // Texto
         text_ajuste.setVisible(false);
         text_tam_pant.setVisible(false);
         tam_pant.setVisible(false);
         atras_vent.setVisible(false);
         // Se muestran los componentes de principal
-            // Imagen portada potter principal
+        // Imagen portada potter principal
         portadapotter.setVisible(true);
-            // Imagen portada el pajaro con lepra principal
+        // Imagen portada el pajaro con lepra principal
         portadapajaroconlepra.setVisible(true);
-            // Fondo del frame
-        fondo_frame.setVisible(true);
-            // Botones
+        // Botones
         siguiente_img.setVisible(true);
         atras_img.setVisible(true);
     }
-    public void componentesbusqueda(){
-        // Texto 
-        busqueda.setText("Resultados de "+buscar_caja.getText()+":");
+
+    public void componentesbusqueda() {
+        // Texto
+        busqueda.setText("Resultados de " + buscar_caja.getText() + ":");
         busqueda.setForeground(Color.WHITE);
-        busqueda.setBounds(200,100,200,40);
+        busqueda.setBounds(200, 100, 200, 40);
         panel_principal.add(busqueda);
 
-        // Botones   
-        atras_vent.setBounds(200,500,100,40);
+        // Botones
+        atras_vent.setBounds(200, 500, 100, 40);
         atras_vent.setBackground(Color.ORANGE);
         panel_principal.add(atras_vent);
         // Action para el boton atras ventana
-        action_atras_vent = new ActionListener(){
-            public void actionPerformed(ActionEvent ae){
+        action_atras_vent = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
                 invisible_componentesbusqueda();
                 invisible_componentesajuste();
             }
-        };atras_vent.addActionListener(action_atras_vent);
-        // Fondo del frame
-        fondo_frame.setVisible(true);
-        panel_principal.add(fondo_frame);
+        };
+        atras_vent.addActionListener(action_atras_vent);
     }
-    public void componentesajustes(){
+
+    public void componentesajustes() {
         // Invisivilizamos los componentes de busqueda
         busqueda.setVisible(false);
         buscar_caja.setVisible(false);
@@ -259,29 +253,31 @@ public class ventanaprincipal extends JFrame{
         tam_pant.setVisible(true);
         // Texto
         text_ajuste.setText("Ajustes");
-        text_ajuste.setFont(new Font("arial",Font.PLAIN, 30));
+        text_ajuste.setFont(new Font("arial", Font.PLAIN, 30));
         text_ajuste.setForeground(Color.ORANGE);
-        text_ajuste.setBounds(200,100,200,60);
+        text_ajuste.setBounds(200, 100, 200, 60);
         panel_principal.add(text_ajuste);
 
         text_tam_pant.setText("Tamaño de pantalla");
         text_tam_pant.setForeground(Color.ORANGE);
-        text_tam_pant.setBounds(50,170,180,100);
+        text_tam_pant.setBounds(50, 170, 180, 100);
         panel_principal.add(text_tam_pant);
-        
+
         // Botones
-        atras_vent.setBounds(200,500,100,40);
+        atras_vent.setVisible(true);
+        atras_vent.setBounds(200, 500, 100, 40);
         atras_vent.setBackground(Color.ORANGE);
         panel_principal.add(atras_vent);
         // Action para el boton atras ventana
-        action_atras_vent = new ActionListener(){
-            public void actionPerformed(ActionEvent ae){
+        action_atras_vent = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
                 invisible_componentesbusqueda();
                 invisible_componentesajuste();
             }
-        };atras_vent.addActionListener(action_atras_vent);
+        };
+        atras_vent.addActionListener(action_atras_vent);
         // ComboBox en donde seleccionara el tamaño de el frame
-        tam_pant.setBounds(200,200,100,40);
+        tam_pant.setBounds(200, 200, 100, 40);
         tam_pant.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -305,8 +301,5 @@ public class ventanaprincipal extends JFrame{
             }
         });
         panel_principal.add(tam_pant);
-        // Fondo del frame
-        fondo_frame.setVisible(true);
-        panel_principal.add(fondo_frame);
     }
 }
