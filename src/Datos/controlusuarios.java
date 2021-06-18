@@ -24,6 +24,7 @@ public class controlusuarios extends JFrame{
     File f = new File("src//Datos//datos.txt");
     JPanel panelusuario = new JPanel();
     JPanel otropanel = new JPanel();
+    JPanel otropanel2 = new JPanel();
     Object[] row = new Object[3];
     DefaultTableModel model = new DefaultTableModel();
     String eliminar="";
@@ -37,13 +38,19 @@ public class controlusuarios extends JFrame{
         // Icono de la Ventana
         setIconImage(new ImageIcon("imagenes//Frame//LogoGrupoTrivino.png").getImage());
         panelusuario.setLayout(null);
-        // Añadimos el panel a la ventana
+        // Añadimos los dos paneles a la ventana
         panelusuario.setBounds(0,400,900,400);
         otropanel.setBounds(0,0,900,400);
         otropanel.setBorder(BorderFactory.createTitledBorder( BorderFactory.createEtchedBorder(), "Lista de Usuarios", TitledBorder.CENTER, TitledBorder.TOP));
         add(panelusuario);
+        otropanel2.setBounds(194,60,500,150);
+        panelusuario.add(otropanel2);
         componentes();
         agregarUsuariosExistentes();
+        // Color de la ventana y el panel
+        otropanel.setBackground(Color.black);
+        otropanel2.setBackground(Color.yellow);
+        panelusuario.setBackground(Color.black);
     }
     public void agregarUsuariosExistentes(){
         String dato="";
@@ -91,13 +98,13 @@ public class controlusuarios extends JFrame{
         JButton btnDelete = new JButton("Eliminar Usuario");
         JButton btnUpdate = new JButton("Modificar Usuario");     
         
-        textNombre.setBounds(20, 220, 100, 25);
-        textContrasena.setBounds(20, 250, 100, 25);
-        textCodigoAdm.setBounds(20, 280, 100, 25);
+        textNombre.setBounds(295, 80, 100, 25);
+        textContrasena.setBounds(295, 120, 100, 25);
+        textCodigoAdm.setBounds(295, 160, 100, 25);
         
-        btnAdd.setBounds(150, 220, 130, 25);
-        btnUpdate.setBounds(150, 265, 130, 25);
-        btnDelete.setBounds(150, 310, 130, 25);
+        btnAdd.setBounds(475, 80, 130, 25);
+        btnUpdate.setBounds(475, 120, 130, 25);
+        btnDelete.setBounds(475, 160, 130, 25);
         
         // add JTextFields to the jframe
         add(table);
@@ -109,7 +116,7 @@ public class controlusuarios extends JFrame{
         panelusuario.add(btnAdd);
         panelusuario.add(btnDelete);
         panelusuario.add(btnUpdate);
-        add(panelusuario);
+        panelusuario.add(otropanel2);
         
         // create JScrollPane
         otropanel.add(new JScrollPane(table));
