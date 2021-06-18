@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+
 import javax.swing.AbstractButton;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -32,8 +34,6 @@ public class reproductorvideo extends javax.swing.JFrame {
     private javax.swing.JSlider sldProgress;
     private javax.swing.JSlider sldVolumen;
     // Termino de declaracion de variables
-
-    private EmbeddedMediaPlayerComponent player;
     static {
         NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:/Program Files/VideoLAN/VLC/");
 
@@ -42,6 +42,8 @@ public class reproductorvideo extends javax.swing.JFrame {
     // bandera para controlar la reproduccion de video y el cambio en el avance de
     // video
     private boolean band = true;
+    private String archivo;
+    EmbeddedMediaPlayerComponent player;
 
     public reproductorvideo() {
         componentes();
@@ -55,6 +57,7 @@ public class reproductorvideo extends javax.swing.JFrame {
     }// end: constructor
 
     public void ejecutarReproduccion(String file) {
+        archivo = file;
         // se añade reproductor
         jPanel2.add(player);
         player.setSize(jPanel2.getSize());
@@ -67,15 +70,14 @@ public class reproductorvideo extends javax.swing.JFrame {
         sldProgress.setMaximum(100);
         sldProgress.setValue(0);
         sldProgress.setEnabled(false);
-        System.out.println(file);
-        btnPlay.doClick();
+
         // Control de reproduccion
         btnPlay.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (file != null) {
-                    player.getMediaPlayer().playMedia(file);
+                    player.getMediaPlayer().playMedia(archivo);
                     sldVolumen.setValue(player.getMediaPlayer().getVolume());
                     sldProgress.setEnabled(true);
                 }
@@ -119,6 +121,7 @@ public class reproductorvideo extends javax.swing.JFrame {
                 principal.reproductor_video.setVisible(false);
                 btnStop.doClick();
                 principal.buscador_videos.setVisible(true);
+
             }
         });
 

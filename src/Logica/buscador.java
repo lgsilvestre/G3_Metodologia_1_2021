@@ -58,6 +58,7 @@ public class buscador extends JFrame {
         // Action para el boton atras ventana
         action_atras_vent = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
+                principal.buscador_videos.limpiarVentana();
                 principal.buscador_videos.setVisible(false);
                 principal.v_principal.setVisible(true);
             }
@@ -67,21 +68,22 @@ public class buscador extends JFrame {
         panel_busqueda.setBackground(Color.BLACK);
     }
 
-    public void mostrarContenidoReproducible(String busqueda) {
+    public void mostrarContenidoReproducible(String busqueda_realizada) {
+
         int tope = 200;
         for (int i = 0; i < principal.base_datos.ruta_videos.size(); i++) {
-            if (principal.base_datos.ruta_videos.get(i).equals(busqueda)) {
+            if (principal.base_datos.ruta_videos.get(i).equals(busqueda_realizada)) {
                 JButton verContenido = new JButton("Ver");
 
                 ActionListener actionBotton = new ActionListener() {
                     public void actionPerformed(ActionEvent ae) {
-                        principal.control_videos.reproducirVideoSeleccionado(busqueda);
+                        principal.control_videos.reproducirVideoSeleccionado(busqueda_realizada);
                     }
                 };
                 verContenido.addActionListener(actionBotton);
 
                 JLabel foto_portada = new JLabel(new ImageIcon("imagenes//frame//foto_usuario.png"));
-                JLabel titulo = new JLabel(busqueda);
+                JLabel titulo = new JLabel(busqueda_realizada);
                 if (tope >= tamano) {
                     tamano += 200;
                     panel_busqueda.setPreferredSize(new Dimension(0, tamano));
@@ -99,6 +101,11 @@ public class buscador extends JFrame {
                 tope += 200;
             }
         }
+    }
+
+    public void limpiarVentana() {
+        panel_busqueda.removeAll();
+        componentes();
     }
 
     public void mostrarContenidoArtista(String buqueda) {

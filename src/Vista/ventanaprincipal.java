@@ -125,6 +125,7 @@ public class ventanaprincipal extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 principal.buscador_videos.setVisible(true);
                 principal.buscador_videos.mostrarContenidoReproducible(buscar_caja.getText());
+                principal.v_principal.setVisible(false);
             }
         };
         buscar.addActionListener(actionbuscar);
