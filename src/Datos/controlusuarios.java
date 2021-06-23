@@ -116,6 +116,7 @@ public class controlusuarios extends JFrame {
         JButton btnAdd = new JButton("Añadir Usuario");
         JButton btnDelete = new JButton("Eliminar Usuario");
         JButton btnUpdate = new JButton("Modificar Usuario");
+        JButton btnBack = new JButton("Atras");
 
         textNombre.setBounds(295, 80, 100, 25);
         textContrasena.setBounds(295, 120, 100, 25);
@@ -124,12 +125,15 @@ public class controlusuarios extends JFrame {
         btnAdd.setBounds(475, 80, 130, 25);
         btnUpdate.setBounds(475, 120, 130, 25);
         btnDelete.setBounds(475, 160, 130, 25);
+        btnBack.setBounds(100, 300, 130, 25);
+        btnBack.setBackground(Color.orange);
 
         // add JTextFields to the jframe
         add(table);
         panelusuario.add(textNombre);
         panelusuario.add(textContrasena);
         panelusuario.add(textCodigoAdm);
+        panelusuario.add(btnBack);
 
         // add JButtons to the jframe
         panelusuario.add(btnAdd);
@@ -214,6 +218,15 @@ public class controlusuarios extends JFrame {
                 }
             }
         });
+        // button back
+        btnBack.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                principal.control_usuario.setVisible(false);
+                principal.v_principal.setVisible(true);
+            }
+        });
     }
 
     // Para ingresar usuarios nuevos
@@ -237,17 +250,13 @@ public class controlusuarios extends JFrame {
                 e2.printStackTrace();
             }
         }
-        borrarDatosListas();
+        principal.base_datos.borrarDatosListas();
         principal.base_datos.leerUsuarios();
         principal.base_datos.imprimir();
     }
 
     public void eliminarUsuarioExistentes(String lineToRemove) {
         Scanner in = new Scanner(System.in);
-        /*
-         * while(true){ if (lineToRemove.length() < 5){ lineToRemove = in.next();
-         * continue; } else{ break; } } in.close();
-         */
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f));
             BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
@@ -284,7 +293,7 @@ public class controlusuarios extends JFrame {
             e.printStackTrace();
         }
         in.close();
-        borrarDatosListas();
+        principal.base_datos.borrarDatosListas();
         principal.base_datos.leerUsuarios();
         principal.base_datos.imprimir();
     }
@@ -293,15 +302,9 @@ public class controlusuarios extends JFrame {
             String contrasena_usuario_Modificado, String codigo_Admin_Modificado) {
         eliminarUsuarioExistentes(nombre_usuario);
         ingresarUsuario(nombre_usuario_Modificado, contrasena_usuario_Modificado, codigo_Admin_Modificado);
-        borrarDatosListas();
+        principal.base_datos.borrarDatosListas();
         principal.base_datos.leerUsuarios();
         principal.base_datos.imprimir();
     }
 
-    // Borrar los datos de las listas
-    public void borrarDatosListas() {
-        principal.base_datos.nombres_usuario = new ArrayList<String>();
-        principal.base_datos.contrasena_usuario = new ArrayList<String>();
-        principal.base_datos.codigo_admin = new ArrayList<String>();
-    }
 }

@@ -9,6 +9,9 @@ public class basedatos {
     public ArrayList<String> nombres_usuario = new ArrayList<String>();
     public ArrayList<String> contrasena_usuario = new ArrayList<String>();
     public ArrayList<String> codigo_admin = new ArrayList<String>();
+
+    public ArrayList<String> nombre_videos = new ArrayList<String>();
+    public ArrayList<String> autores_videos = new ArrayList<String>();
     public ArrayList<String> ruta_videos = new ArrayList<String>();
 
     // Leemos el txt donde se encontraran todos los nombres, contraseñas y codigo de
@@ -16,22 +19,58 @@ public class basedatos {
     File f = new File("src//Datos//datos.txt");
     File f_auxiliar = new File("src//Datos//auxiliar.txt");
     // El txt con la ruta de los videos
-    File f_videos = new File("src//Datos//info_videos.txt");
+    File f_ruta_v = new File("src//Datos//ruta_videos.txt");
+    // el txt con los nombre de los videos
+    File f_nombre_v = new File("src//Datos//nombre_videos.txt");
+    // el txt con los autores de los videos
+    File f_autores_v = new File("src//Datos//autores_videos.txt");
 
     // Constructor
     public basedatos() {
         leerUsuarios();
         leerRutaVideos();
+        leerAutoresVideos();
+        leerNombreVideos();
     }
 
     // Para leer el txt donde estaran la ruta de los videos
-    private void leerRutaVideos() {
+    public void leerRutaVideos() {
         String rutaVideo = "";
         try {
-            Scanner leer = new Scanner(f_videos);
+            Scanner leer = new Scanner(f_ruta_v);
             while (leer.hasNext()) { // mientras no se llegue al final del fichero
                 rutaVideo = leer.next();
                 ruta_videos.add(rutaVideo);
+            }
+            leer.close();
+        } catch (Exception e) {
+            System.out.println("ERROR");
+        }
+    }
+
+    // Para leer el txt donde estaran los autores de los videos
+    public void leerAutoresVideos() {
+        String autoresVideo = "";
+        try {
+            Scanner leer = new Scanner(f_autores_v);
+            while (leer.hasNext()) { // mientras no se llegue al final del fichero
+                autoresVideo = leer.next();
+                autores_videos.add(autoresVideo);
+            }
+            leer.close();
+        } catch (Exception e) {
+            System.out.println("ERROR");
+        }
+    }
+
+    // Para leer el txt donde estaran los nombres de los videos
+    public void leerNombreVideos() {
+        String nombreVideo = "";
+        try {
+            Scanner leer = new Scanner(f_nombre_v);
+            while (leer.hasNext()) { // mientras no se llegue al final del fichero
+                nombreVideo = leer.next();
+                nombre_videos.add(nombreVideo);
             }
             leer.close();
         } catch (Exception e) {
@@ -65,6 +104,19 @@ public class basedatos {
         } catch (Exception e) {
             System.out.println("ERROR");
         }
+    }
+
+    // Borrar los datos de las listas
+    public void borrarDatosListas() {
+        nombres_usuario = new ArrayList<String>();
+        contrasena_usuario = new ArrayList<String>();
+        codigo_admin = new ArrayList<String>();
+    }
+
+    public void borrarDatosVideos() {
+        nombre_videos = new ArrayList<String>();
+        autores_videos = new ArrayList<String>();
+        ruta_videos = new ArrayList<String>();
     }
 
     // Imprimir TODO de las listas (PARA PRUEBA)

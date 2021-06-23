@@ -16,12 +16,12 @@ import java.awt.event.ActionEvent;
 
 public class buscador extends JFrame {
     public JPanel panel_busqueda = new JPanel();
+    public int tamano = principal.v_principal.largo;
     public JLabel busqueda = new JLabel();
     public JButton atras_vent = new JButton();
     public JLabel fondo_frame = new JLabel(new ImageIcon("imagenes//Frame//fondo_frame.jpg"));
     public ActionListener action_atras_vent;
     public JScrollPane scroll = new JScrollPane();
-    public int tamano = principal.v_principal.largo;
 
     public buscador() {
         // Tamaño de la ventana
@@ -71,8 +71,8 @@ public class buscador extends JFrame {
     public void mostrarContenidoReproducible(String busqueda_realizada) {
 
         int tope = 200;
-        for (int i = 0; i < principal.base_datos.ruta_videos.size(); i++) {
-            if (principal.base_datos.ruta_videos.get(i).equals(busqueda_realizada)) {
+        for (int i = 0; i < principal.base_datos.nombre_videos.size(); i++) {
+            if (principal.base_datos.nombre_videos.get(i).equals(busqueda_realizada)) {
                 JButton verContenido = new JButton("Ver");
 
                 ActionListener actionBotton = new ActionListener() {
