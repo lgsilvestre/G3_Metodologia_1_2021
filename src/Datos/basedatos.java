@@ -127,6 +127,12 @@ public class basedatos {
         }
     }
 
+    public void imprimirautores() {
+        for (int i = 0; i < autores_videos.size(); i++) {
+            System.out.println("Autores:" + autores_videos.get(i));
+        }
+    }
+
     // Retornar Listas
     public ArrayList<String> getNombres_usuario() {
         return nombres_usuario;

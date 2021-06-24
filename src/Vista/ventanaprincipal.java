@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Datos.controlusuarios;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -34,6 +33,7 @@ public class ventanaprincipal extends JFrame {
     public JButton buscar = new JButton(new ImageIcon("imagenes//Frame//imagen_buscar.png"));
     public JButton siguiente_img = new JButton(new ImageIcon("imagenes//Frame//siguiente.png"));
     public JButton atras_img = new JButton(new ImageIcon("imagenes//Frame//atras.png"));
+    public JButton filtro = new JButton(new ImageIcon("imagenes//Frame//filtro.png"));
     public JButton atras_vent = new JButton("Atrás");
     // Componentes de la seccion para el admin
     // Texto
@@ -151,11 +151,23 @@ public class ventanaprincipal extends JFrame {
         ActionListener actionbuscar = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 principal.buscador_videos.setVisible(true);
-                principal.buscador_videos.mostrarContenidoReproducible(buscar_caja.getText());
+                principal.buscador_videos.filtro_Buscador(buscar_caja.getText());
                 principal.v_principal.setVisible(false);
             }
         };
         buscar.addActionListener(actionbuscar);
+
+        filtro.setBackground(Color.orange);
+        filtro.setBounds(650, 60, 30, 30);
+        panel_principal.add(filtro);
+        // Action para el filtro de busqueda
+        ActionListener actionfiltro = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                principal.filtro_frame.setVisible(true);
+                bloquearBotones();
+            }
+        };
+        filtro.addActionListener(actionfiltro);
 
         siguiente_img.setBackground(Color.ORANGE);
         siguiente_img.setBounds(700, 300, 40, 40);
@@ -368,6 +380,26 @@ public class ventanaprincipal extends JFrame {
         buscar_caja.setVisible(true);
         buscar.setVisible(true);
         ajustes.setVisible(true);
+    }
+
+    public void bloquearBotones() {
+        filtro.setEnabled(false);
+        ajustes.setEnabled(false);
+        buscar.setEnabled(false);
+        logotrivino.setEnabled(false);
+        siguiente_img.setEnabled(false);
+        atras_img.setEnabled(false);
+        admin.setEnabled(false);
+    }
+
+    public void desbloquearBotones() {
+        filtro.setEnabled(true);
+        ajustes.setEnabled(true);
+        buscar.setEnabled(true);
+        logotrivino.setEnabled(true);
+        siguiente_img.setEnabled(true);
+        atras_img.setEnabled(true);
+        admin.setEnabled(true);
     }
 
 }
