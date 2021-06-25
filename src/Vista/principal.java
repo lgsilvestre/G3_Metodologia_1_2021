@@ -1,8 +1,10 @@
 package Vista;
 
+import Datos.agregarvideo;
 import Datos.basedatos;
 import Datos.controlusuarios;
 import Datos.controlvideos;
+import Datos.eliminarvideo;
 import Logica.buscador;
 
 public class principal {
@@ -24,8 +26,13 @@ public class principal {
     public static controlvideos control_videos = new controlvideos();
     public static buscador buscador_videos = new buscador();
     public static filtroFrame filtro_frame = new filtroFrame();
+    public static eliminarvideo eliminar_video = new eliminarvideo();
+    public static agregarvideo agregar_video = new agregarvideo();
 
     public static void main(String[] args) {
+        // agregar_video.setVisible(true);
+        // eliminar_video.setVisible(true);
+
         control_usuario.setVisible(false);
         v_principal.setVisible(true);
         v_principal.init_ventanaprincipal();

@@ -40,14 +40,16 @@ public class ventanaprincipal extends JFrame {
     public JLabel titulo_admin = new JLabel("CONTROL DE USUARIOS Y VIDEOS");
     // Botones
     public JButton controlusuarios_btn = new JButton("Control Usuarios");
-    public JButton controlvideos_btn = new JButton("Control Videos");
+    public JButton agregar_videos_btn = new JButton("Agregar Videos");
+    public JButton eliminar_videos_btn = new JButton("Eliminar Videos");
     // Action Listener de los botones
     // atras
     public ActionListener action_atras_vent;
     // control usuarios
     public ActionListener action_controlusuarios;
     // control videos
-    public ActionListener action_controlvideos;
+    public ActionListener action_agregar_videos;
+    public ActionListener action_eliminar_videos;
     // Ajustes
     public JButton ajustes = new JButton(new ImageIcon("imagenes//Frame//ajuste.png"));
     // Admin
@@ -276,7 +278,8 @@ public class ventanaprincipal extends JFrame {
         // Visibilizamos los componentes de admin
         titulo_admin.setVisible(true);
         controlusuarios_btn.setVisible(true);
-        controlvideos_btn.setVisible(true);
+        agregar_videos_btn.setVisible(true);
+        eliminar_videos_btn.setVisible(true);
         // Titulo
         titulo_admin.setBounds(300, 100, 200, 50);
         titulo_admin.setForeground(Color.white);
@@ -293,16 +296,27 @@ public class ventanaprincipal extends JFrame {
         controlusuarios_btn.addActionListener(action_controlusuarios);
         panel_principal.add(controlusuarios_btn);
 
-        controlvideos_btn.setBounds(500, 400, 150, 30);
-        controlvideos_btn.setBackground(Color.orange);
-        action_controlvideos = new ActionListener() {
+        agregar_videos_btn.setBounds(300, 400, 150, 30);
+        agregar_videos_btn.setBackground(Color.orange);
+        action_agregar_videos = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 principal.v_principal.setVisible(false);
-                principal.control_videos.setVisible(true);
+                principal.agregar_video.setVisible(true);
             }
         };
-        controlvideos_btn.addActionListener(action_controlvideos);
-        panel_principal.add(controlvideos_btn);
+        agregar_videos_btn.addActionListener(action_agregar_videos);
+        panel_principal.add(agregar_videos_btn);
+
+        eliminar_videos_btn.setBounds(500, 400, 150, 30);
+        eliminar_videos_btn.setBackground(Color.orange);
+        action_eliminar_videos = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                principal.v_principal.setVisible(false);
+                principal.eliminar_video.setVisible(true);
+            }
+        };
+        eliminar_videos_btn.addActionListener(action_eliminar_videos);
+        panel_principal.add(eliminar_videos_btn);
 
         // Botones
         atras_vent.setVisible(true);
@@ -322,7 +336,8 @@ public class ventanaprincipal extends JFrame {
         // Se ocultan los componentes de admin
         titulo_admin.setVisible(false);
         controlusuarios_btn.setVisible(false);
-        controlvideos_btn.setVisible(false);
+        eliminar_videos_btn.setVisible(false);
+        agregar_videos_btn.setVisible(false);
         atras_vent.setVisible(false);
         // Se muestran los componentes de principal
         // Imagen portada potter principal
