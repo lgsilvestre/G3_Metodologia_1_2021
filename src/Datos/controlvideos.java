@@ -1,6 +1,7 @@
 package Datos;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,6 +15,8 @@ public class controlvideos {
     String f_nombre = "src/Datos/nombre_videos.txt";
     String f_autores = "src/Datos/autores_videos.txt";
     String f_auxiliar = "src/Datos/auxiliar.txt";
+
+    File file;
 
     // Constructor
     public controlvideos() {
@@ -101,7 +104,7 @@ public class controlvideos {
             }
         }
 
-        principal.base_datos.borrarDatosVideos();
+        principal.base_datos.borrarDatosVideosListas();
         principal.base_datos.leerRutaVideos();
         principal.base_datos.leerAutoresVideos();
         principal.base_datos.leerNombreVideos();
@@ -109,7 +112,7 @@ public class controlvideos {
     }
 
     // NO FUNCIONA EL ELIMINAR TODAVIA
-    public void eliminarVideo(String nombreVideo) {
+    public void eliminarVideo(String rutaVideo, String nombreVideo, String autorVideo) {
         Scanner in = new Scanner(System.in);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f_ruta));
@@ -118,7 +121,7 @@ public class controlvideos {
             String currentLine;
 
             while ((currentLine = reader.readLine()) != null) {
-                if (currentLine.contains(nombreVideo)) {
+                if (currentLine.contains(rutaVideo)) {
                     continue;
                 }
                 writer.write(currentLine + System.getProperty("line.separator"));
@@ -147,7 +150,83 @@ public class controlvideos {
             e.printStackTrace();
         }
         in.close();
-        principal.base_datos.borrarDatosVideos();
+        //
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(f_nombre));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
+
+            String currentLine;
+
+            while ((currentLine = reader.readLine()) != null) {
+                if (currentLine.contains(nombreVideo)) {
+                    continue;
+                }
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+
+            writer.close();
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(f_auxiliar));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f_nombre));
+
+            String currentLine;
+
+            while ((currentLine = reader.readLine()) != null) {
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+
+            writer.close();
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(f_autores));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
+
+            String currentLine;
+
+            while ((currentLine = reader.readLine()) != null) {
+                if (currentLine.contains(autorVideo)) {
+                    continue;
+                }
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+
+            writer.close();
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(f_auxiliar));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f_autores));
+
+            String currentLine;
+
+            while ((currentLine = reader.readLine()) != null) {
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+
+            writer.close();
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        in.close();
+        principal.base_datos.borrarDatosVideosListas();
+
+        file = new File(rutaVideo);
+        file.delete();
 
         principal.base_datos.leerRutaVideos();
         principal.base_datos.leerAutoresVideos();

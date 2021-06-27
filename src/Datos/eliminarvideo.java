@@ -41,6 +41,7 @@ public class eliminarvideo extends JFrame {
         principal.eliminar_video.setVisible(false);
         principal.eliminar_video.setVisible(true);
         componentes();
+        mostrarVideosParaEliminar();
     }
 
     public void componentes() {
@@ -69,8 +70,9 @@ public class eliminarvideo extends JFrame {
             JButton eliminar = new JButton("Eliminar");
             ActionListener actionBotton = new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
-                    // eliminarVideo(principal.base_datos.ruta_videos.get(j));
-                    // actualizarFrame();
+                    principal.control_videos.eliminarVideo(principal.base_datos.ruta_videos.get(j),
+                            principal.base_datos.nombre_videos.get(j), principal.base_datos.autores_videos.get(j));
+                    actualizarFrame();
                 }
             };
             eliminar.addActionListener(actionBotton);

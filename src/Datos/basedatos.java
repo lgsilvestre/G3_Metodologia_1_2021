@@ -107,13 +107,13 @@ public class basedatos {
     }
 
     // Borrar los datos de las listas
-    public void borrarDatosListas() {
+    public void borrarDatosUsuariosListas() {
         nombres_usuario = new ArrayList<String>();
         contrasena_usuario = new ArrayList<String>();
         codigo_admin = new ArrayList<String>();
     }
 
-    public void borrarDatosVideos() {
+    public void borrarDatosVideosListas() {
         nombre_videos = new ArrayList<String>();
         autores_videos = new ArrayList<String>();
         ruta_videos = new ArrayList<String>();

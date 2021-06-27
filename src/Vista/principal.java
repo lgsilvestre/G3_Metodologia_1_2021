@@ -30,6 +30,8 @@ public class principal {
     public static agregarvideo agregar_video = new agregarvideo();
 
     public static void main(String[] args) {
+
+        // control_videos.eliminarVideo("videos//anashe.mp4", "anashe", "Coscu");
         // agregar_video.setVisible(true);
         // eliminar_video.setVisible(true);
 

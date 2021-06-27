@@ -250,7 +250,7 @@ public class controlusuarios extends JFrame {
                 e2.printStackTrace();
             }
         }
-        principal.base_datos.borrarDatosListas();
+        principal.base_datos.borrarDatosUsuariosListas();
         principal.base_datos.leerUsuarios();
         principal.base_datos.imprimir();
     }
@@ -293,7 +293,7 @@ public class controlusuarios extends JFrame {
             e.printStackTrace();
         }
         in.close();
-        principal.base_datos.borrarDatosListas();
+        principal.base_datos.borrarDatosUsuariosListas();
         principal.base_datos.leerUsuarios();
         principal.base_datos.imprimir();
     }
@@ -302,7 +302,7 @@ public class controlusuarios extends JFrame {
             String contrasena_usuario_Modificado, String codigo_Admin_Modificado) {
         eliminarUsuarioExistentes(nombre_usuario);
         ingresarUsuario(nombre_usuario_Modificado, contrasena_usuario_Modificado, codigo_Admin_Modificado);
-        principal.base_datos.borrarDatosListas();
+        principal.base_datos.borrarDatosUsuariosListas();
         principal.base_datos.leerUsuarios();
         principal.base_datos.imprimir();
     }
