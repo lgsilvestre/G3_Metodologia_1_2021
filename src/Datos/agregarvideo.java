@@ -70,6 +70,7 @@ public class agregarvideo extends JFrame {
 
         JTextField direccion_video_caja = new JTextField();
         direccion_video_caja.setBounds(400, 440, 100, 20);
+        direccion_video_caja.setEnabled(false);
         panel_agregarVideo.add(direccion_video_caja);
 
         JButton atras = new JButton("Atras");
@@ -89,8 +90,14 @@ public class agregarvideo extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 System.out.println("Agregar");
                 moverArchivo(origenArchivo, "videos");
-                principal.control_videos.anadirVideo(nombre_video_caja.getText(), destinoArchivo,
-                        nombre_autores_caja.getText());
+                if (principal.control_videos.validarInserccionVideo(destinoArchivo, nombre_video_caja.getText(),
+                        nombre_autores_caja.getText())) {
+                    principal.control_videos.anadirVideo(nombre_video_caja.getText(), destinoArchivo,
+                            nombre_autores_caja.getText());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error en los campos");
+                }
+
             }
         };
         agregarVideo.addActionListener(actionBottonAgregar);

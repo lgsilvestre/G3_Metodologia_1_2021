@@ -17,6 +17,7 @@ public class controlvideos {
     String f_auxiliar = "src/Datos/auxiliar.txt";
 
     File file;
+    char[] validacion;
 
     // Constructor
     public controlvideos() {
@@ -232,6 +233,43 @@ public class controlvideos {
         principal.base_datos.leerAutoresVideos();
         principal.base_datos.leerNombreVideos();
         imprimir();
+    }
+
+    public boolean validarInserccionVideo(String rutaVideo, String nombreVideo, String autorVideo) {
+        validacion = rutaVideo.toCharArray();
+        if (validacion.length >= 70) {
+            return false;
+        } else {
+            for (int i = 0; i < validacion.length; i++) {
+                if (validacion[i] == ' ' || validacion[i] == ':') {
+                    return false;
+                }
+            }
+        }
+
+        validacion = nombreVideo.toCharArray();
+        if (validacion.length >= 70) {
+            return false;
+        } else {
+            for (int i = 0; i < validacion.length; i++) {
+                if (validacion[i] == ' ' || validacion[i] == ':') {
+                    return false;
+                }
+            }
+        }
+
+        validacion = autorVideo.toCharArray();
+        if (validacion.length >= 70) {
+            return false;
+        } else {
+            for (int i = 0; i < validacion.length; i++) {
+                if (validacion[i] == ' ' || validacion[i] == ':') {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     public void imprimir() {

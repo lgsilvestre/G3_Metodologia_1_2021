@@ -275,6 +275,7 @@ public class ventanaprincipal extends JFrame {
         busqueda.setVisible(false);
         buscar_caja.setVisible(false);
         buscar.setVisible(false);
+        filtro.setVisible(false);
         // Visibilizamos los componentes de admin
         titulo_admin.setVisible(true);
         controlusuarios_btn.setVisible(true);
@@ -312,6 +313,7 @@ public class ventanaprincipal extends JFrame {
         action_eliminar_videos = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 principal.v_principal.setVisible(false);
+                principal.eliminar_video.actualizarFrame();
                 principal.eliminar_video.setVisible(true);
             }
         };
@@ -355,6 +357,7 @@ public class ventanaprincipal extends JFrame {
         buscar_caja.setVisible(true);
         buscar.setVisible(true);
         ajustes.setVisible(true);
+        filtro.setVisible(true);
     }
 
     public void invisible_componentesprincipal() {
