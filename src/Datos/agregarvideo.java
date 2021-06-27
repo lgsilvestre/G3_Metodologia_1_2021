@@ -26,7 +26,7 @@ public class agregarvideo extends JFrame {
 
     public agregarvideo() {
         // Tamaño de la ventana
-        this.setSize(900, 800);
+        setSize(principal.v_principal.ancho, principal.v_principal.largo);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Empresa Triviño LTDA");
@@ -37,6 +37,10 @@ public class agregarvideo extends JFrame {
         panel_agregarVideo.setBackground(Color.BLACK);
         this.add(panel_agregarVideo);
         componentes();
+    }
+
+    public void init_agregarvideo() {
+        this.setSize(principal.v_principal.ancho, principal.v_principal.largo);
     }
 
     public void componentes() {
@@ -81,7 +85,7 @@ public class agregarvideo extends JFrame {
             }
         };
         atras.addActionListener(actionBottonAtras);
-        atras.setBounds(100, 600, 100, 30);
+        atras.setBounds(100, 500, 100, 30);
         atras.setBackground(Color.orange);
         panel_agregarVideo.add(atras);
 
@@ -94,6 +98,9 @@ public class agregarvideo extends JFrame {
                         nombre_autores_caja.getText())) {
                     principal.control_videos.anadirVideo(nombre_video_caja.getText(), destinoArchivo,
                             nombre_autores_caja.getText());
+                    JOptionPane.showMessageDialog(null, "Video Agregado");
+                    principal.agregar_video.setVisible(false);
+                    principal.v_principal.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Error en los campos");
                 }
@@ -101,7 +108,7 @@ public class agregarvideo extends JFrame {
             }
         };
         agregarVideo.addActionListener(actionBottonAgregar);
-        agregarVideo.setBounds(600, 600, 100, 30);
+        agregarVideo.setBounds(600, 500, 100, 30);
         agregarVideo.setBackground(Color.orange);
         panel_agregarVideo.add(agregarVideo);
 
@@ -149,8 +156,5 @@ public class agregarvideo extends JFrame {
         } catch (IOException e) {
             System.err.println(e);
         }
-    }
-
-    public void validaciones(String nombre_video, String nombre_autores, String rutaSeleccionada) {
     }
 }

@@ -21,7 +21,7 @@ public class eliminarvideo extends JFrame {
 
     public eliminarvideo() {
         // Tamaño de la ventana
-        this.setSize(900, 800);
+        setSize(principal.v_principal.ancho, principal.v_principal.largo);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Empresa Triviño LTDA");
@@ -34,6 +34,10 @@ public class eliminarvideo extends JFrame {
         this.add(scroll);
         componentes();
         mostrarVideosParaEliminar();
+    }
+
+    public void init_eliminarvideo() {
+        this.setSize(principal.v_principal.ancho, principal.v_principal.largo);
     }
 
     public void actualizarFrame() {

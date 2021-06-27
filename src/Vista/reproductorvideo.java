@@ -47,7 +47,7 @@ public class reproductorvideo extends javax.swing.JFrame {
 
     public reproductorvideo() {
         componentes();
-        setSize(800, 800);
+        setSize(principal.v_principal.ancho, principal.v_principal.largo);
         setTitle("Triviño LTDA");// nombre de reproductor
         setResizable(false);// No sea modificable el frame
         setLocationRelativeTo(null);// centrar en pantalla
@@ -55,6 +55,10 @@ public class reproductorvideo extends javax.swing.JFrame {
         setIconImage(new ImageIcon("imagenes\\LogoGrupoTrivino.png").getImage());
         player = new EmbeddedMediaPlayerComponent();
     }// end: constructor
+
+    public void init_reproductorvideo() {
+        this.setSize(principal.v_principal.ancho, principal.v_principal.largo);
+    }
 
     public void ejecutarReproduccion(String file) {
         archivo = file;

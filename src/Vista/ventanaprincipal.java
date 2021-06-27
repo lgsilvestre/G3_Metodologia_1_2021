@@ -152,6 +152,7 @@ public class ventanaprincipal extends JFrame {
         // Action para el boton buscar
         ActionListener actionbuscar = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
+                principal.buscador_videos.init_buscador();
                 principal.buscador_videos.setVisible(true);
                 principal.buscador_videos.filtro_Buscador(buscar_caja.getText());
                 principal.v_principal.setVisible(false);
@@ -302,6 +303,7 @@ public class ventanaprincipal extends JFrame {
         action_agregar_videos = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 principal.v_principal.setVisible(false);
+                principal.agregar_video.init_agregarvideo();
                 principal.agregar_video.setVisible(true);
             }
         };
@@ -314,6 +316,7 @@ public class ventanaprincipal extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 principal.v_principal.setVisible(false);
                 principal.eliminar_video.actualizarFrame();
+                principal.eliminar_video.init_eliminarvideo();
                 principal.eliminar_video.setVisible(true);
             }
         };
@@ -322,7 +325,7 @@ public class ventanaprincipal extends JFrame {
 
         // Botones
         atras_vent.setVisible(true);
-        atras_vent.setBounds(100, 600, 100, 40);
+        atras_vent.setBounds(100, 500, 100, 40);
         atras_vent.setBackground(Color.ORANGE);
         // Action para el boton atras ventana
         action_atras_vent = new ActionListener() {

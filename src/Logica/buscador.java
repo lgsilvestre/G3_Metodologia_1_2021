@@ -40,6 +40,10 @@ public class buscador extends JFrame {
         add(scroll);
     }
 
+    public void init_buscador() {
+        this.setSize(principal.v_principal.ancho, principal.v_principal.largo);
+    }
+
     public void filtro_Buscador(String busqueda_realizada) {
         if (principal.filtro_seleccionado) {
             // Autor

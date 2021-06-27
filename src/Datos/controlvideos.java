@@ -34,6 +34,7 @@ public class controlvideos {
         }
         if (a) {
             principal.reproductor_video.setVisible(true);
+            principal.reproductor_video.init_reproductorvideo();
             principal.reproductor_video.ejecutarReproduccion(principal.base_datos.ruta_videos.get(index));
         }
     }
