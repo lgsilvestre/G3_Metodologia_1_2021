@@ -12,7 +12,7 @@ public class principal {
     // etc
     // Si el usuario que ingresa es ADMINISTRADOR entonces el tipo_usuario sera
     // TRUE, del caso contrario es FALSE
-    public static boolean tipo_usuario = true;
+    public static boolean tipo_usuario = false;
     // Si el usuario busca a partir de los titulos de los videos el
     // filtro_seleccionado sera false, de caso contrario es true
     public static boolean filtro_seleccionado = false;
@@ -31,14 +31,7 @@ public class principal {
 
     public static void main(String[] args) {
 
-        // control_videos.eliminarVideo("videos//anashe.mp4", "anashe", "Coscu");
-        // agregar_video.setVisible(true);
-        // eliminar_video.setVisible(true);
-
-        control_usuario.setVisible(false);
-        v_principal.setVisible(true);
-        v_principal.init_ventanaprincipal();
-        v_principal.iniciarcomponentes();
+        v_inicio.setVisible(true);
 
     }
 }

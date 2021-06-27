@@ -1,4 +1,4 @@
-AmparoLeiva01 07/11/2006 null
+AmparoLeiva01 07/11/2006 AmparoLeiva01_admin
 JoseFlores02 07/11/2006 null
 AlvaroHerrera03 07/11/2006 null
 VictorCornejo04 07/11/2006 null
