@@ -11,10 +11,10 @@ import java.util.Scanner;
 import Vista.principal;
 
 public class controlvideos {
-    String f_ruta = "src/Datos/ruta_videos.txt";
-    String f_nombre = "src/Datos/nombre_videos.txt";
-    String f_autores = "src/Datos/autores_videos.txt";
-    String f_auxiliar = "src/Datos/auxiliar.txt";
+    String f_ruta = "datos_txt/ruta_videos.txt";
+    String f_nombre = "datos_txt/nombre_videos.txt";
+    String f_autores = "datos_txt/autores_videos.txt";
+    String f_auxiliar = "datos_txt/auxiliar.txt";
 
     File file;
     char[] validacion;

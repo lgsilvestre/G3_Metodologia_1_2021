@@ -30,8 +30,6 @@ public class principal {
     public static agregarvideo agregar_video = new agregarvideo();
 
     public static void main(String[] args) {
-
         v_inicio.setVisible(true);
-
     }
 }

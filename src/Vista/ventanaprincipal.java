@@ -216,10 +216,12 @@ public class ventanaprincipal extends JFrame {
         busqueda.setVisible(false);
         buscar_caja.setVisible(false);
         buscar.setVisible(false);
+        filtro.setVisible(false);
         // Visivilizamos los componentes de ajustes
         text_ajuste.setVisible(true);
         text_tam_pant.setVisible(true);
         tam_pant.setVisible(true);
+        atras_vent.setVisible(true);
         // Texto
         text_ajuste.setText("Ajustes");
         text_ajuste.setFont(new Font("arial", Font.PLAIN, 30));
@@ -229,12 +231,11 @@ public class ventanaprincipal extends JFrame {
 
         text_tam_pant.setText("Tamaño de pantalla");
         text_tam_pant.setForeground(Color.ORANGE);
-        text_tam_pant.setBounds(50, 170, 180, 100);
+        text_tam_pant.setBounds(200, 170, 180, 100);
         panel_principal.add(text_tam_pant);
 
         // Botones
-        atras_vent.setVisible(true);
-        atras_vent.setBounds(200, 500, 100, 40);
+        atras_vent.setBounds(200, 400, 100, 40);
         atras_vent.setBackground(Color.ORANGE);
         panel_principal.add(atras_vent);
         // Action para el boton atras ventana
@@ -245,7 +246,7 @@ public class ventanaprincipal extends JFrame {
         };
         atras_vent.addActionListener(action_atras_vent);
         // ComboBox en donde seleccionara el tamaño de el frame
-        tam_pant.setBounds(200, 200, 100, 40);
+        tam_pant.setBounds(400, 200, 100, 40);
         tam_pant.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -282,6 +283,7 @@ public class ventanaprincipal extends JFrame {
         controlusuarios_btn.setVisible(true);
         agregar_videos_btn.setVisible(true);
         eliminar_videos_btn.setVisible(true);
+        atras_vent.setVisible(true);
         // Titulo
         titulo_admin.setBounds(300, 100, 200, 50);
         titulo_admin.setForeground(Color.white);
@@ -324,7 +326,6 @@ public class ventanaprincipal extends JFrame {
         panel_principal.add(eliminar_videos_btn);
 
         // Botones
-        atras_vent.setVisible(true);
         atras_vent.setBounds(100, 500, 100, 40);
         atras_vent.setBackground(Color.ORANGE);
         // Action para el boton atras ventana
