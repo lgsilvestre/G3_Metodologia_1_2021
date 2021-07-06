@@ -14,6 +14,7 @@ public class controlvideos {
     String f_ruta = "datos_txt/ruta_videos.txt";
     String f_nombre = "datos_txt/nombre_videos.txt";
     String f_autores = "datos_txt/autores_videos.txt";
+    String f_portada = "datos_txt/portada_videos.txt";
     String f_auxiliar = "datos_txt/auxiliar.txt";
 
     File file;
@@ -114,7 +115,7 @@ public class controlvideos {
     }
 
     // NO FUNCIONA EL ELIMINAR TODAVIA
-    public void eliminarVideo(String rutaVideo, String nombreVideo, String autorVideo) {
+    public void eliminarVideo(String rutaVideo, String nombreVideo, String autorVideo, String rutaPortada) {
         Scanner in = new Scanner(System.in);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f_ruta));
@@ -224,6 +225,42 @@ public class controlvideos {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(f_portada));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
+
+            String currentLine;
+
+            while ((currentLine = reader.readLine()) != null) {
+                if (currentLine.contains(rutaPortada)) {
+                    continue;
+                }
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+
+            writer.close();
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(f_auxiliar));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f_portada));
+
+            String currentLine;
+
+            while ((currentLine = reader.readLine()) != null) {
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+
+            writer.close();
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         in.close();
         principal.base_datos.borrarDatosVideosListas();
 
@@ -233,10 +270,12 @@ public class controlvideos {
         principal.base_datos.leerRutaVideos();
         principal.base_datos.leerAutoresVideos();
         principal.base_datos.leerNombreVideos();
+        principal.base_datos.leerPortadaVideos();
         imprimir();
     }
 
-    public boolean validarInserccionVideo(String rutaVideo, String nombreVideo, String autorVideo) {
+    public boolean validarInserccionVideo(String rutaVideo, String nombreVideo, String autorVideo,
+            String portadaVideo) {
         validacion = rutaVideo.toCharArray();
         if (validacion.length >= 70) {
             return false;
@@ -260,6 +299,17 @@ public class controlvideos {
         }
 
         validacion = autorVideo.toCharArray();
+        if (validacion.length >= 70) {
+            return false;
+        } else {
+            for (int i = 0; i < validacion.length; i++) {
+                if (validacion[i] == ' ' || validacion[i] == ':') {
+                    return false;
+                }
+            }
+        }
+
+        validacion = portadaVideo.toCharArray();
         if (validacion.length >= 70) {
             return false;
         } else {

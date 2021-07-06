@@ -13,6 +13,7 @@ public class basedatos {
     public ArrayList<String> nombre_videos = new ArrayList<String>();
     public ArrayList<String> autores_videos = new ArrayList<String>();
     public ArrayList<String> ruta_videos = new ArrayList<String>();
+    public ArrayList<String> ruta_portada = new ArrayList<String>();
 
     // Leemos el txt donde se encontraran todos los nombres, contraseñas y codigo de
     // admin
@@ -24,6 +25,8 @@ public class basedatos {
     File f_nombre_v = new File("datos_txt//nombre_videos.txt");
     // el txt con los autores de los videos
     File f_autores_v = new File("datos_txt//autores_videos.txt");
+    // el txt con los autores de los videos
+    File f_portada_v = new File("datos_txt//portada_videos.txt");
 
     // Constructor
     public basedatos() {
@@ -31,6 +34,7 @@ public class basedatos {
         leerRutaVideos();
         leerAutoresVideos();
         leerNombreVideos();
+        leerPortadaVideos();
     }
 
     // Para leer el txt donde estaran la ruta de los videos
@@ -71,6 +75,21 @@ public class basedatos {
             while (leer.hasNext()) { // mientras no se llegue al final del fichero
                 nombreVideo = leer.next();
                 nombre_videos.add(nombreVideo);
+            }
+            leer.close();
+        } catch (Exception e) {
+            System.out.println("ERROR");
+        }
+    }
+
+    // Para leer el txt donde estaran las portadas de los videos
+    public void leerPortadaVideos() {
+        String portadaVideo = "";
+        try {
+            Scanner leer = new Scanner(f_portada_v);
+            while (leer.hasNext()) { // mientras no se llegue al final del fichero
+                portadaVideo = leer.next();
+                ruta_portada.add(portadaVideo);
             }
             leer.close();
         } catch (Exception e) {
@@ -133,6 +152,12 @@ public class basedatos {
         }
     }
 
+    public void imprimirportada() {
+        for (int i = 0; i < ruta_portada.size(); i++) {
+            System.out.println("Autores:" + ruta_portada.get(i));
+        }
+    }
+
     // Retornar Listas
     public ArrayList<String> getNombres_usuario() {
         return nombres_usuario;
@@ -159,6 +184,9 @@ public class basedatos {
         return codigo_admin.size();
     }
 
+    public int getTamPORTADA() {
+        return ruta_portada.size();
+    }
     // ArrayList de las busquedas (ES IRRELEVANTE SI FUNCIONA O NO)
     // public ArrayList<String> getRegistrar_busqueda(){return registrar_busqueda;}
 

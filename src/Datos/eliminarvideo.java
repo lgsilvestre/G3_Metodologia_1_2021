@@ -75,13 +75,13 @@ public class eliminarvideo extends JFrame {
             ActionListener actionBotton = new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
                     principal.control_videos.eliminarVideo(principal.base_datos.ruta_videos.get(j),
-                            principal.base_datos.nombre_videos.get(j), principal.base_datos.autores_videos.get(j));
+                            principal.base_datos.nombre_videos.get(j), principal.base_datos.autores_videos.get(j),
+                            principal.base_datos.ruta_portada.get(j));
                     actualizarFrame();
                 }
             };
             eliminar.addActionListener(actionBotton);
-
-            JLabel foto_portada = new JLabel(new ImageIcon("imagenes//frame//foto_usuario.png"));
+            JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(j)));
             JLabel titulo = new JLabel(principal.base_datos.nombre_videos.get(j));
             if (tope >= tamano) {
                 tamano += 200;

@@ -26,7 +26,7 @@ public class ventanaprincipal extends JFrame {
     // Imagen usuario (por mientras)
     public JLabel imagen_usuario = new JLabel(new ImageIcon("imagenes//Frame//foto_usuario.png"));
     // Imagen portada potter principal
-    public JLabel portadapotter = new JLabel(new ImageIcon("imagenes//Portada//potter.jpg"));
+    public JLabel portadapotter = new JLabel(new ImageIcon("imagenes//Portada//Portada_coscu.jpg"));
     // Imagen portada el pajaro con lepra principal
     public JLabel portadapajaroconlepra = new JLabel(new ImageIcon("imagenes//Portada//elpajaroconlepra.png"));
     // Botones

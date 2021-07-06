@@ -46,17 +46,26 @@ public class agregarvideo extends JFrame {
     public void componentes() {
         JLabel titulo_agregarvideo = new JLabel("Agregar Videos");
         titulo_agregarvideo.setForeground(Color.white);
-        titulo_agregarvideo.setBounds(300, 100, 200, 100);
+        titulo_agregarvideo.setBounds(300, 50, 200, 100);
         panel_agregarVideo.add(titulo_agregarvideo);
 
         JLabel nombre_video = new JLabel("Ingrese el nombre: ");
         nombre_video.setForeground(Color.orange);
-        nombre_video.setBounds(200, 200, 200, 100);
+        nombre_video.setBounds(200, 100, 200, 100);
         panel_agregarVideo.add(nombre_video);
 
         JTextField nombre_video_caja = new JTextField();
-        nombre_video_caja.setBounds(400, 240, 100, 20);
+        nombre_video_caja.setBounds(400, 140, 100, 20);
         panel_agregarVideo.add(nombre_video_caja);
+
+        JLabel portada_video = new JLabel("Portada: ");
+        portada_video.setForeground(Color.orange);
+        portada_video.setBounds(200, 200, 200, 100);
+        panel_agregarVideo.add(portada_video);
+
+        JTextField portada_video_caja = new JTextField();
+        portada_video_caja.setBounds(400, 240, 100, 20);
+        panel_agregarVideo.add(portada_video_caja);
 
         JLabel nombre_autores = new JLabel("Autores: ");
         nombre_autores.setForeground(Color.orange);
@@ -94,8 +103,9 @@ public class agregarvideo extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 System.out.println("Agregar");
                 moverArchivo(origenArchivo, "videos");
+                moverArchivo(origenArchivo, "imagenes//Portada");
                 if (principal.control_videos.validarInserccionVideo(destinoArchivo, nombre_video_caja.getText(),
-                        nombre_autores_caja.getText())) {
+                        nombre_autores_caja.getText(), portada_video_caja.getText())) {
                     principal.control_videos.anadirVideo(nombre_video_caja.getText(), destinoArchivo,
                             nombre_autores_caja.getText());
                     JOptionPane.showMessageDialog(null, "Video Agregado");
@@ -112,7 +122,7 @@ public class agregarvideo extends JFrame {
         agregarVideo.setBackground(Color.orange);
         panel_agregarVideo.add(agregarVideo);
 
-        JButton buscarDirectorio = new JButton("Buscar");
+        JButton buscarDirectorio_video = new JButton("Buscar");
         ActionListener actionBottonBuscar = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 origenArchivo = selector();
@@ -121,10 +131,24 @@ public class agregarvideo extends JFrame {
 
             }
         };
-        buscarDirectorio.addActionListener(actionBottonBuscar);
-        buscarDirectorio.setBounds(530, 440, 80, 20);
-        buscarDirectorio.setBackground(Color.orange);
-        panel_agregarVideo.add(buscarDirectorio);
+        buscarDirectorio_video.addActionListener(actionBottonBuscar);
+        buscarDirectorio_video.setBounds(530, 440, 80, 20);
+        buscarDirectorio_video.setBackground(Color.orange);
+        panel_agregarVideo.add(buscarDirectorio_video);
+
+        JButton buscarDirectorio_portada = new JButton("Buscar");
+        ActionListener actionBottonBuscar_portada = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                origenArchivo = selector();
+                portada_video_caja.setText(origenArchivo);
+                System.out.println(origenArchivo);
+
+            }
+        };
+        buscarDirectorio_portada.addActionListener(actionBottonBuscar_portada);
+        buscarDirectorio_portada.setBounds(530, 240, 80, 20);
+        buscarDirectorio_portada.setBackground(Color.orange);
+        panel_agregarVideo.add(buscarDirectorio_portada);
     }
 
     /*
@@ -149,7 +173,6 @@ public class agregarvideo extends JFrame {
     public void moverArchivo(String origen, String destino) {
         Path origenPath = FileSystems.getDefault().getPath(origen);
         Path destinoPath = FileSystems.getDefault().getPath(destino + "//" + origenPath.getFileName());
-        destinoArchivo = "videos//" + origenPath.getFileName();
 
         try {
             Files.move(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
@@ -157,4 +180,5 @@ public class agregarvideo extends JFrame {
             System.err.println(e);
         }
     }
+
 }
