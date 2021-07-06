@@ -32,10 +32,10 @@ import javax.swing.border.TitledBorder;
 import javax.swing.BorderFactory;
 
 public class controlusuarios extends JFrame {
-    File f = new File("src//Datos//datos.txt");
-    File f_auxiliar = new File("src//Datos//auxiliar.txt");
+    File f = new File("datos_txt//datos.txt");
+    File f_auxiliar = new File("datos_txt//auxiliar.txt");
     // El txt con la ruta de los videos
-    File f_videos = new File("src//Datos//info_videos.txt");
+    File f_videos = new File("datos_txt//info_videos.txt");
 
     JPanel panelusuario = new JPanel();
     JPanel otropanel = new JPanel();

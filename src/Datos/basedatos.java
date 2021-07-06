@@ -16,14 +16,14 @@ public class basedatos {
 
     // Leemos el txt donde se encontraran todos los nombres, contraseñas y codigo de
     // admin
-    File f = new File("src//Datos//datos.txt");
-    File f_auxiliar = new File("src//Datos//auxiliar.txt");
+    File f = new File("datos_txt//datos.txt");
+    File f_auxiliar = new File("datos_txt//auxiliar.txt");
     // El txt con la ruta de los videos
-    File f_ruta_v = new File("src//Datos//ruta_videos.txt");
+    File f_ruta_v = new File("datos_txt//ruta_videos.txt");
     // el txt con los nombre de los videos
-    File f_nombre_v = new File("src//Datos//nombre_videos.txt");
+    File f_nombre_v = new File("datos_txt//nombre_videos.txt");
     // el txt con los autores de los videos
-    File f_autores_v = new File("src//Datos//autores_videos.txt");
+    File f_autores_v = new File("datos_txt//autores_videos.txt");
 
     // Constructor
     public basedatos() {
