@@ -20,7 +20,6 @@ public class buscador extends JFrame {
     public int tamano = principal.v_principal.largo;
     public JLabel busqueda = new JLabel();
     public JButton atras_vent = new JButton();
-    public JLabel fondo_frame = new JLabel(new ImageIcon("imagenes//Frame//fondo_frame.jpg"));
     public ActionListener action_atras_vent;
     public JScrollPane scroll = new JScrollPane();
 
@@ -56,7 +55,6 @@ public class buscador extends JFrame {
 
     public void componentes() {
         // Texto
-        busqueda.setText("Resultados de " + ":");
         busqueda.setForeground(Color.WHITE);
         busqueda.setBounds(200, 100, 200, 40);
         panel_busqueda.add(busqueda);
@@ -81,6 +79,7 @@ public class buscador extends JFrame {
 
     public void mostrarContenidoReproducibleTitulo(String busqueda_realizada) {
         int tope = 200;
+        busqueda.setText("Resultados de " + busqueda_realizada + " :");
         for (int i = 0; i < principal.base_datos.nombre_videos.size(); i++) {
             if (principal.base_datos.nombre_videos.get(i).equals(busqueda_realizada)) {
                 JButton verContenido = new JButton("Ver");
@@ -92,7 +91,7 @@ public class buscador extends JFrame {
                 };
                 verContenido.addActionListener(actionBotton);
 
-                JLabel foto_portada = new JLabel(new ImageIcon("imagenes//frame//foto_usuario.png"));
+                JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
                 JLabel titulo = new JLabel(busqueda_realizada);
                 if (tope >= tamano) {
                     tamano += 200;
@@ -114,8 +113,8 @@ public class buscador extends JFrame {
     }
 
     public void mostrarContenidoReproducibleAutor(String busqueda_realizada) {
-
         int tope = 200;
+        busqueda.setText("Resultados de " + busqueda_realizada + " :");
         for (int i = 0; i < principal.base_datos.autores_videos.size(); i++) {
             if (principal.base_datos.autores_videos.get(i).equals(busqueda_realizada)) {
                 index = i;
@@ -128,7 +127,7 @@ public class buscador extends JFrame {
                 };
                 verContenido.addActionListener(actionBotton);
 
-                JLabel foto_portada = new JLabel(new ImageIcon("imagenes//frame//foto_usuario.png"));
+                JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
                 JLabel titulo = new JLabel(principal.base_datos.nombre_videos.get(i));
                 if (tope >= tamano) {
                     tamano += 200;

@@ -127,6 +127,7 @@ public class ventanaprincipal extends JFrame {
         ActionListener actionprincipal = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 invisible_componentesajuste();
+                invisible_componentesadmin();
             }
         };
         logotrivino.addActionListener(actionprincipal);
@@ -279,11 +280,11 @@ public class ventanaprincipal extends JFrame {
         buscar.setVisible(false);
         filtro.setVisible(false);
         // Visibilizamos los componentes de admin
+        atras_vent.setVisible(true);
         titulo_admin.setVisible(true);
         controlusuarios_btn.setVisible(true);
         agregar_videos_btn.setVisible(true);
         eliminar_videos_btn.setVisible(true);
-        atras_vent.setVisible(true);
         // Titulo
         titulo_admin.setBounds(300, 100, 200, 50);
         titulo_admin.setForeground(Color.white);
@@ -317,7 +318,6 @@ public class ventanaprincipal extends JFrame {
         action_eliminar_videos = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 principal.v_principal.setVisible(false);
-                principal.eliminar_video.actualizarFrame();
                 principal.eliminar_video.init_eliminarvideo();
                 principal.eliminar_video.setVisible(true);
             }

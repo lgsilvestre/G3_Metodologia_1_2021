@@ -40,7 +40,7 @@ public class controlvideos {
         }
     }
 
-    public void anadirVideo(String nombreVideo, String rutaVideo, String autoresVideo) {
+    public void anadirVideo(String nombreVideo, String rutaVideo, String autoresVideo, String portadaVideo) {
         // Añadimos la ruta
 
         PrintWriter pw = null;
@@ -106,11 +106,32 @@ public class controlvideos {
                 e2.printStackTrace();
             }
         }
+        // Añadimos las portadas
+        pw = null;
+        fw = null;
+        try {
+            // Escribe en los nombres de los videos
+            fw = new FileWriter(f_portada, true);
+            pw = new PrintWriter(fw);
+            pw.println(portadaVideo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                // Nuevamente aprovechamos el finally para
+                // asegurarnos que se cierra el fichero.
+                if (null != fw)
+                    fw.close();
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
 
         principal.base_datos.borrarDatosVideosListas();
         principal.base_datos.leerRutaVideos();
         principal.base_datos.leerAutoresVideos();
         principal.base_datos.leerNombreVideos();
+        principal.base_datos.leerPortadaVideos();
         imprimir();
     }
 
@@ -267,6 +288,9 @@ public class controlvideos {
         file = new File(rutaVideo);
         file.delete();
 
+        file = new File(rutaPortada);
+        file.delete();
+
         principal.base_datos.leerRutaVideos();
         principal.base_datos.leerAutoresVideos();
         principal.base_datos.leerNombreVideos();
@@ -281,7 +305,7 @@ public class controlvideos {
             return false;
         } else {
             for (int i = 0; i < validacion.length; i++) {
-                if (validacion[i] == ' ' || validacion[i] == ':') {
+                if (validacion[i] == ' ') {
                     return false;
                 }
             }
@@ -309,12 +333,12 @@ public class controlvideos {
             }
         }
 
-        validacion = portadaVideo.toCharArray();
+        System.out.println(validacion);
         if (validacion.length >= 70) {
             return false;
         } else {
             for (int i = 0; i < validacion.length; i++) {
-                if (validacion[i] == ' ' || validacion[i] == ':') {
+                if (validacion[i] == ' ') {
                     return false;
                 }
             }

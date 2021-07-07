@@ -136,6 +136,7 @@ public class basedatos {
         nombre_videos = new ArrayList<String>();
         autores_videos = new ArrayList<String>();
         ruta_videos = new ArrayList<String>();
+        ruta_portada = new ArrayList<String>();
     }
 
     // Imprimir TODO de las listas (PARA PRUEBA)

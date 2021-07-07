@@ -1,6 +1,7 @@
-pajaro
-Goku
-Osito
-auronplay
-lgante
-lgante
+imagenes/Portada/portada_mecha_min.jpg
+imagenes/Portada/portada_goku_min.jpg
+imagenes/Portada/portada_mecha_min.jpg
+imagenes/Portada/portada_coscu_min.jpg
+imagenes/Portada/portada_auron_min.jpg
+imagenes/Portada/portada_aleteo_min.jpg
+imagenes/Portada/portada_lgante_tp_min.jpg
