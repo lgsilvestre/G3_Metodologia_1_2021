@@ -118,14 +118,15 @@ public class buscador extends JFrame {
         for (int i = 0; i < principal.base_datos.autores_videos.size(); i++) {
             if (principal.base_datos.autores_videos.get(i).equals(busqueda_realizada)) {
                 index = i;
-                JButton verContenido = new JButton("Ver");
-                ActionListener actionBotton = new ActionListener() {
+                JButton verContenido = new JButton("Ver" + i);
+                System.out.println(principal.base_datos.nombre_videos.get(i));
+                ActionListener actionBottonVer = new ActionListener() {
                     public void actionPerformed(ActionEvent ae) {
                         principal.control_videos
                                 .reproducirVideoSeleccionado(principal.base_datos.nombre_videos.get(index));
                     }
                 };
-                verContenido.addActionListener(actionBotton);
+                verContenido.addActionListener(actionBottonVer);
 
                 JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
                 JLabel titulo = new JLabel(principal.base_datos.nombre_videos.get(i));

@@ -393,6 +393,7 @@ public class ventanaprincipal extends JFrame {
         portadapajaroconlepra.setVisible(true);
         // Botones
         siguiente_img.setVisible(true);
+        filtro.setVisible(true);
         atras_img.setVisible(true);
         if (principal.tipo_usuario) {
             admin.setVisible(true);
