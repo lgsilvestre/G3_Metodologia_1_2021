@@ -1,0 +1,20 @@
+Pruebas:
+*Para que el programa funcione de buena manera, al momento de subir un archivo debe ser ".mp3" o ".mp4".
+
+*Para que el programa funcione de buena manera, el nombre de una película no debe superar los 70 caracteres.
+
+*Para que el programa funcione de buena manera, los distintos contenidos deben tener una portada distinta al resto.
+
+*Para que el programa funcione de buena manera, la dirección de los archivos no debe contener espacios.
+
+*Para que el programa funcione de buena manera, el nombre del autor no se debe repetir.
+
+*Para que el programa funcione de buena manera, el nombre del autor no puede contener espacios.
+
+*Para que el programa funcione de buena manera, el nombre el archivo que contenga la portada no debe poseer espacios.
+
+*Para que el programa funcione de buena manera, la portada debe ser un archivo de tipo ".jpeg".
+
+
+
+ 
