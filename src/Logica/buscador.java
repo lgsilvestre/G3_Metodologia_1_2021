@@ -78,74 +78,120 @@ public class buscador extends JFrame {
     }
 
     public void mostrarContenidoReproducibleTitulo(String busqueda_realizada) {
-        int tope = 200;
-        busqueda.setText("Resultados de " + busqueda_realizada + " :");
-        for (int i = 0; i < principal.base_datos.nombre_videos.size(); i++) {
-            if (principal.base_datos.nombre_videos.get(i).equals(busqueda_realizada)) {
-                JButton verContenido = new JButton("Ver");
+        if (busqueda_realizada.equals("all")) {
+            mostrarTodoVideos();
+        } else {
+            int tope = 200;
+            busqueda.setText("Resultados de " + busqueda_realizada + " :");
+            for (int i = 0; i < principal.base_datos.nombre_videos.size(); i++) {
+                if (principal.base_datos.nombre_videos.get(i).equals(busqueda_realizada)) {
+                    JButton verContenido = new JButton("Ver");
 
-                ActionListener actionBotton = new ActionListener() {
-                    public void actionPerformed(ActionEvent ae) {
-                        principal.control_videos.reproducirVideoSeleccionado(busqueda_realizada);
+                    ActionListener actionBotton = new ActionListener() {
+                        public void actionPerformed(ActionEvent ae) {
+                            principal.control_videos.reproducirVideoSeleccionado(busqueda_realizada);
+                        }
+                    };
+                    verContenido.addActionListener(actionBotton);
+
+                    JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
+                    JLabel titulo = new JLabel(busqueda_realizada);
+                    if (tope >= tamano) {
+                        tamano += 200;
+                        panel_busqueda.setPreferredSize(new Dimension(0, tamano));
                     }
-                };
-                verContenido.addActionListener(actionBotton);
+                    titulo.setForeground(Color.white);
+                    titulo.setBounds(300, tope, 120, 30);
 
-                JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
-                JLabel titulo = new JLabel(busqueda_realizada);
-                if (tope >= tamano) {
-                    tamano += 200;
-                    panel_busqueda.setPreferredSize(new Dimension(0, tamano));
+                    foto_portada.setBounds(200, tope - 30, 100, 93);
+
+                    verContenido.setBounds(450, tope, 100, 30);
+                    verContenido.setBackground(Color.orange);
+                    panel_busqueda.add(foto_portada);
+                    panel_busqueda.add(titulo);
+                    panel_busqueda.add(verContenido);
+                    tope += 200;
                 }
-                titulo.setForeground(Color.white);
-                titulo.setBounds(300, tope, 120, 30);
-
-                foto_portada.setBounds(200, tope - 30, 100, 93);
-
-                verContenido.setBounds(450, tope, 100, 30);
-                verContenido.setBackground(Color.orange);
-                panel_busqueda.add(foto_portada);
-                panel_busqueda.add(titulo);
-                panel_busqueda.add(verContenido);
-                tope += 200;
             }
         }
+
     }
 
     public void mostrarContenidoReproducibleAutor(String busqueda_realizada) {
-        int tope = 200;
-        busqueda.setText("Resultados de " + busqueda_realizada + " :");
-        for (int i = 0; i < principal.base_datos.autores_videos.size(); i++) {
-            if (principal.base_datos.autores_videos.get(i).equals(busqueda_realizada)) {
-                index = i;
-                JButton verContenido = new JButton("Ver" + i);
-                System.out.println(principal.base_datos.nombre_videos.get(i));
-                ActionListener actionBottonVer = new ActionListener() {
-                    public void actionPerformed(ActionEvent ae) {
-                        principal.control_videos
-                                .reproducirVideoSeleccionado(principal.base_datos.nombre_videos.get(index));
+        if (busqueda_realizada.equals("all")) {
+            mostrarTodoVideos();
+        } else {
+            int tope = 200;
+            busqueda.setText("Resultados de " + busqueda_realizada + " :");
+            for (int i = 0; i < principal.base_datos.autores_videos.size(); i++) {
+                if (principal.base_datos.autores_videos.get(i).equals(busqueda_realizada)) {
+                    final Integer index = i;
+                    JButton verContenido = new JButton("Ver");
+                    System.out.println(principal.base_datos.nombre_videos.get(i));
+                    ActionListener actionBottonVer = new ActionListener() {
+                        public void actionPerformed(ActionEvent ae) {
+                            principal.control_videos
+                                    .reproducirVideoSeleccionado(principal.base_datos.nombre_videos.get(index));
+                        }
+                    };
+                    verContenido.addActionListener(actionBottonVer);
+
+                    JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
+                    JLabel titulo = new JLabel(principal.base_datos.nombre_videos.get(i));
+                    if (tope >= tamano) {
+                        tamano += 200;
+                        panel_busqueda.setPreferredSize(new Dimension(0, tamano));
                     }
-                };
-                verContenido.addActionListener(actionBottonVer);
+                    titulo.setForeground(Color.white);
+                    titulo.setBounds(300, tope, 120, 30);
 
-                JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
-                JLabel titulo = new JLabel(principal.base_datos.nombre_videos.get(i));
-                if (tope >= tamano) {
-                    tamano += 200;
-                    panel_busqueda.setPreferredSize(new Dimension(0, tamano));
+                    foto_portada.setBounds(200, tope - 30, 100, 93);
+
+                    verContenido.setBounds(450, tope, 100, 30);
+                    verContenido.setBackground(Color.orange);
+                    panel_busqueda.add(foto_portada);
+                    panel_busqueda.add(titulo);
+                    panel_busqueda.add(verContenido);
+                    tope += 200;
                 }
-                titulo.setForeground(Color.white);
-                titulo.setBounds(300, tope, 120, 30);
-
-                foto_portada.setBounds(200, tope - 30, 100, 93);
-
-                verContenido.setBounds(450, tope, 100, 30);
-                verContenido.setBackground(Color.orange);
-                panel_busqueda.add(foto_portada);
-                panel_busqueda.add(titulo);
-                panel_busqueda.add(verContenido);
-                tope += 200;
             }
+        }
+
+    }
+
+    public void mostrarTodoVideos() {
+        int tope = 200;
+
+        for (int i = 0; i < principal.base_datos.autores_videos.size(); i++) {
+            final Integer index = i;
+            JButton verContenido = new JButton("Ver");
+            System.out.println(principal.base_datos.nombre_videos.get(i));
+            ActionListener actionBottonVer = new ActionListener() {
+                public void actionPerformed(ActionEvent ae) {
+                    System.out.println("OPA" + index);
+                    principal.control_videos.reproducirVideoSeleccionado(principal.base_datos.nombre_videos.get(index));
+                }
+            };
+            verContenido.addActionListener(actionBottonVer);
+
+            JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
+            JLabel titulo = new JLabel(principal.base_datos.nombre_videos.get(i));
+            if (tope >= tamano) {
+                tamano += 200;
+                panel_busqueda.setPreferredSize(new Dimension(0, tamano));
+            }
+            titulo.setForeground(Color.white);
+            titulo.setBounds(300, tope, 120, 30);
+
+            foto_portada.setBounds(200, tope - 30, 100, 93);
+
+            verContenido.setBounds(450, tope, 100, 30);
+            verContenido.setBackground(Color.orange);
+            panel_busqueda.add(foto_portada);
+            panel_busqueda.add(titulo);
+            panel_busqueda.add(verContenido);
+            tope += 200;
+
         }
     }
 
