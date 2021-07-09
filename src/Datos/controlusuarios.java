@@ -37,11 +37,17 @@ public class controlusuarios extends JFrame {
     // El txt con la ruta de los videos
     File f_videos = new File("datos_txt//info_videos.txt");
 
+    // Panel para el control de el usuario
     JPanel panelusuario = new JPanel();
+    // Panel que se utilizara para mostrar la tabla de todos los usuarios ingresados
     JPanel otropanel = new JPanel();
+    // Panel que se utilizara para el color del panel
     JPanel otropanel2 = new JPanel();
+    // Para darles las columnas a la tabla
     Object[] row = new Object[3];
+    // Se crea la tabla
     DefaultTableModel model = new DefaultTableModel();
+    // String que nos servira para la eliminacion de un usuario
     String eliminar = "";
 
     public controlusuarios() {
@@ -70,11 +76,14 @@ public class controlusuarios extends JFrame {
         panelusuario.setBackground(Color.black);
     }
 
+    // Funcion que nos servira para agregar usuarios que estan en el txt (se cargan
+    // en la tabla simplemente)
     public void agregarUsuariosExistentes() {
         String dato = "";
         int i = 0;
         try {
             Scanner leer = new Scanner(f);
+            // Con el while agregamos todos los usuarios a la tabla
             while (leer.hasNext()) { // mientras no se llegue al final del fichero
                 dato = leer.next();
                 row[i] = dato;
@@ -252,9 +261,9 @@ public class controlusuarios extends JFrame {
         }
         principal.base_datos.borrarDatosUsuariosListas();
         principal.base_datos.leerUsuarios();
-        principal.base_datos.imprimir();
     }
 
+    // funcion que nos servira para eliminar los usuarios que estan en el txt
     public void eliminarUsuarioExistentes(String lineToRemove) {
         Scanner in = new Scanner(System.in);
         try {
@@ -295,16 +304,17 @@ public class controlusuarios extends JFrame {
         in.close();
         principal.base_datos.borrarDatosUsuariosListas();
         principal.base_datos.leerUsuarios();
-        principal.base_datos.imprimir();
     }
 
+    // Funcion que nos servira para modificar los usuarios que estan contenidos en
+    // el txt
+    // Funciona eliminando el dato a modificar y luego agregando las modificaciones
     public void modificarUsuariosExistentes(String nombre_usuario, String nombre_usuario_Modificado,
             String contrasena_usuario_Modificado, String codigo_Admin_Modificado) {
         eliminarUsuarioExistentes(nombre_usuario);
         ingresarUsuario(nombre_usuario_Modificado, contrasena_usuario_Modificado, codigo_Admin_Modificado);
         principal.base_datos.borrarDatosUsuariosListas();
         principal.base_datos.leerUsuarios();
-        principal.base_datos.imprimir();
     }
 
 }
