@@ -13,7 +13,7 @@ La Aplicación funciona con VLC, por lo cual, su equipo tendrá que tener instal
 - JDK        ->https://www.oracle.com/cl/java/technologies/javase-jdk11-downloads.html   
 - VLC 64bits ->https://get.videolan.org/vlc/3.0.16/win64/vlc-3.0.16-win64.exe
 
-#Pruebas de consistencia
+# Pruebas de consistencia
 -Para que el programa funcione de buena manera, al momento de subir un archivo debe ser ".mp3" o ".mp4".
 -Para que el programa funcione de buena manera, el nombre de una película no debe superar los 70 caracteres.
 -Para que el programa funcione de buena manera, los distintos contenidos deben tener una portada distinta al resto.
