@@ -138,6 +138,7 @@ public class controlvideos {
 
     // NO FUNCIONA EL ELIMINAR TODAVIA
     public void eliminarVideo(String rutaVideo, String nombreVideo, String autorVideo, String rutaPortada) {
+        boolean b = false;
         Scanner in = new Scanner(System.in);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f_ruta));
@@ -297,6 +298,7 @@ public class controlvideos {
         principal.base_datos.leerNombreVideos();
         principal.base_datos.leerPortadaVideos();
         imprimir();
+        System.out.println("-------------------");
     }
 
     public boolean validarInserccionVideo(String rutaVideo, String nombreVideo, String autorVideo,
@@ -305,15 +307,16 @@ public class controlvideos {
         if (validacion.length >= 70) {
             return false;
         } else {
-            for (int i = 0; i < validacion.length; i++) {
-                if (validacion[i] == ' ') {
-                    return false;
-                }
+            if (rutaVideo.equals("videos//") || rutaVideo == " ") {
+                return false;
             }
+
         }
 
         validacion = nombreVideo.toCharArray();
         if (validacion.length >= 70) {
+            return false;
+        } else if (nombreVideo.equals("")) {
             return false;
         } else {
             for (int i = 0; i < validacion.length; i++) {
@@ -325,6 +328,8 @@ public class controlvideos {
 
         validacion = autorVideo.toCharArray();
         if (validacion.length >= 70) {
+            return false;
+        } else if (autorVideo.equals("")) {
             return false;
         } else {
             for (int i = 0; i < validacion.length; i++) {
@@ -338,10 +343,8 @@ public class controlvideos {
         if (validacion.length >= 70) {
             return false;
         } else {
-            for (int i = 0; i < validacion.length; i++) {
-                if (validacion[i] == ' ') {
-                    return false;
-                }
+            if (portadaVideo.equals("imagenes//Portada//") || portadaVideo.equals("")) {
+                return false;
             }
         }
 
