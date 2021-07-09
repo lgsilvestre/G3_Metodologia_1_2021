@@ -318,6 +318,7 @@ public class ventanaprincipal extends JFrame {
         action_eliminar_videos = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 principal.v_principal.setVisible(false);
+                principal.eliminar_video.actualizarFrame();
                 principal.eliminar_video.init_eliminarvideo();
                 principal.eliminar_video.setVisible(true);
             }
@@ -405,6 +406,7 @@ public class ventanaprincipal extends JFrame {
         ajustes.setVisible(true);
     }
 
+    // Funcion para bloquear todos los botones
     public void bloquearBotones() {
         filtro.setEnabled(false);
         ajustes.setEnabled(false);
@@ -415,6 +417,7 @@ public class ventanaprincipal extends JFrame {
         admin.setEnabled(false);
     }
 
+    // Funcion para desbloquear todos los botones
     public void desbloquearBotones() {
         filtro.setEnabled(true);
         ajustes.setEnabled(true);

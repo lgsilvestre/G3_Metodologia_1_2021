@@ -11,6 +11,7 @@ import java.util.Scanner;
 import Vista.principal;
 
 public class controlvideos {
+    // La ruta de todos los archivos vinculados con los videos
     String f_ruta = "datos_txt/ruta_videos.txt";
     String f_nombre = "datos_txt/nombre_videos.txt";
     String f_autores = "datos_txt/autores_videos.txt";
@@ -24,15 +25,18 @@ public class controlvideos {
     public controlvideos() {
     }
 
+    // Funcion que nos servira para la reproduccion del video
     public void reproducirVideoSeleccionado(String nombreVideo) {
         boolean a = false;
         int index = 0;
+        // Primero se busca si el video esta en la base de datos
         for (int i = 0; i < principal.base_datos.nombre_videos.size(); i++) {
             if (principal.base_datos.nombre_videos.get(i).equals(nombreVideo)) {
                 a = true;
                 index = i;
             }
         }
+        // De acuerdo al indice se reproducira el video
         if (a) {
             principal.buscador_videos.setVisible(false);
             principal.reproductor_video.setVisible(true);
@@ -128,18 +132,21 @@ public class controlvideos {
             }
         }
 
+        // Se borra todo y se lee nuevamente
         principal.base_datos.borrarDatosVideosListas();
         principal.base_datos.leerRutaVideos();
         principal.base_datos.leerAutoresVideos();
         principal.base_datos.leerNombreVideos();
         principal.base_datos.leerPortadaVideos();
-        imprimir();
     }
 
     // NO FUNCIONA EL ELIMINAR TODAVIA
     public void eliminarVideo(String rutaVideo, String nombreVideo, String autorVideo, String rutaPortada) {
-        boolean b = false;
         Scanner in = new Scanner(System.in);
+        // Se utilizara el mismo metodo que en el eliminar los usuarios, esta vez
+        // eliminaremos la ruta de video, nombrevideo, autor video y la ruta de la
+        // portada
+        // Se elimina la ruta del video
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f_ruta));
             BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
@@ -176,7 +183,7 @@ public class controlvideos {
             e.printStackTrace();
         }
         in.close();
-        //
+        // Se elimina el nombre del video de la base de datos y del txt
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f_nombre));
             BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
@@ -212,7 +219,7 @@ public class controlvideos {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //
+        // Se elimina los autores del video de la base de datos y del txt
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f_autores));
             BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
@@ -248,7 +255,7 @@ public class controlvideos {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //
+        // Se elimina la ruta de portada del video de la base de datos y del txt
         try {
             BufferedReader reader = new BufferedReader(new FileReader(f_portada));
             BufferedWriter writer = new BufferedWriter(new FileWriter(f_auxiliar));
@@ -285,24 +292,27 @@ public class controlvideos {
             e.printStackTrace();
         }
         in.close();
+        // Se borra todas las listas
         principal.base_datos.borrarDatosVideosListas();
 
+        // se eliminan los videos y las portadas
         file = new File(rutaVideo);
         file.delete();
 
         file = new File(rutaPortada);
         file.delete();
 
+        // Se lee todo nuevamente con los cambios aplicados
         principal.base_datos.leerRutaVideos();
         principal.base_datos.leerAutoresVideos();
         principal.base_datos.leerNombreVideos();
         principal.base_datos.leerPortadaVideos();
-        imprimir();
-        System.out.println("-------------------");
     }
 
+    // Funcion que nos servira para validar la inserccion de un video
     public boolean validarInserccionVideo(String rutaVideo, String nombreVideo, String autorVideo,
             String portadaVideo) {
+        // Revisamos si estan correctamente los datos ingresados
         validacion = rutaVideo.toCharArray();
         if (validacion.length >= 70) {
             return false;
@@ -313,6 +323,8 @@ public class controlvideos {
 
         }
 
+        // Revisamos si las letras no tienen : o tienen espacios, ya que esto seria lo
+        // queremos evitar
         validacion = nombreVideo.toCharArray();
         if (validacion.length >= 70) {
             return false;
@@ -326,6 +338,7 @@ public class controlvideos {
             }
         }
 
+        // Revisamos si estan correctamente los datos ingresados
         validacion = autorVideo.toCharArray();
         if (validacion.length >= 70) {
             return false;
@@ -339,7 +352,7 @@ public class controlvideos {
             }
         }
 
-        System.out.println(validacion);
+        // Revisamos si estan correctamente los datos ingresados
         if (validacion.length >= 70) {
             return false;
         } else {
@@ -351,9 +364,4 @@ public class controlvideos {
         return true;
     }
 
-    public void imprimir() {
-        for (int i = 0; i < principal.base_datos.ruta_videos.size(); i++) {
-            System.out.println("rutaVideo:" + principal.base_datos.ruta_videos.get(i));
-        }
-    }
 }

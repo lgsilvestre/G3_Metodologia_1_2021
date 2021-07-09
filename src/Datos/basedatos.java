@@ -139,26 +139,6 @@ public class basedatos {
         ruta_portada = new ArrayList<String>();
     }
 
-    // Imprimir TODO de las listas (PARA PRUEBA)
-    public void imprimir() {
-        for (int i = 0; i < nombres_usuario.size(); i++) {
-            System.out.println("Nombre:" + nombres_usuario.get(i) + ", Contraseña: " + contrasena_usuario.get(i)
-                    + ", CodigoADM: " + codigo_admin.get(i));
-        }
-    }
-
-    public void imprimirautores() {
-        for (int i = 0; i < autores_videos.size(); i++) {
-            System.out.println("Autores:" + autores_videos.get(i));
-        }
-    }
-
-    public void imprimirportada() {
-        for (int i = 0; i < ruta_portada.size(); i++) {
-            System.out.println("Autores:" + ruta_portada.get(i));
-        }
-    }
-
     // Retornar Listas
     public ArrayList<String> getNombres_usuario() {
         return nombres_usuario;

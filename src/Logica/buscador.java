@@ -39,10 +39,12 @@ public class buscador extends JFrame {
         add(scroll);
     }
 
+    // funcion que nos permitira cambiar el tamaño del frame
     public void init_buscador() {
         this.setSize(principal.v_principal.ancho, principal.v_principal.largo);
     }
 
+    // Funcion que nos servira para saber con respecto a que estamos buscando
     public void filtro_Buscador(String busqueda_realizada) {
         if (principal.filtro_seleccionado) {
             // Autor
@@ -53,6 +55,7 @@ public class buscador extends JFrame {
         }
     }
 
+    // Componentes que tendra el panel
     public void componentes() {
         // Texto
         busqueda.setForeground(Color.WHITE);
@@ -79,14 +82,17 @@ public class buscador extends JFrame {
 
     public void mostrarContenidoReproducibleTitulo(String busqueda_realizada) {
         if (busqueda_realizada.equals("all")) {
+            // Si el usuario ingresa "all", se mostrar todos los videos
             mostrarTodoVideos();
         } else {
+            // Se muestran los contenidos con respecto al titulo
             int tope = 200;
             busqueda.setText("Resultados de " + busqueda_realizada + " :");
             for (int i = 0; i < principal.base_datos.nombre_videos.size(); i++) {
                 if (principal.base_datos.nombre_videos.get(i).equals(busqueda_realizada)) {
                     JButton verContenido = new JButton("Ver");
 
+                    // Se mostrara el video relacionado si es que presiona el boton verContenido
                     ActionListener actionBotton = new ActionListener() {
                         public void actionPerformed(ActionEvent ae) {
                             principal.control_videos.reproducirVideoSeleccionado(busqueda_realizada);
@@ -94,7 +100,9 @@ public class buscador extends JFrame {
                     };
                     verContenido.addActionListener(actionBotton);
 
+                    // Se mostrara la portada relacionado con el video
                     JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
+                    // Se mostrara el titulo relacionado con el video
                     JLabel titulo = new JLabel(busqueda_realizada);
                     if (tope >= tamano) {
                         tamano += 200;
@@ -117,8 +125,11 @@ public class buscador extends JFrame {
 
     }
 
+    // Es lo mismo que mostrarContenidoReproducibleTitulo, solo que muestra los
+    // contenidos con respecto al autor
     public void mostrarContenidoReproducibleAutor(String busqueda_realizada) {
         if (busqueda_realizada.equals("all")) {
+            // Si el usuario ingresa "all", se mostrar todos los videos
             mostrarTodoVideos();
         } else {
             int tope = 200;
@@ -127,7 +138,7 @@ public class buscador extends JFrame {
                 if (principal.base_datos.autores_videos.get(i).equals(busqueda_realizada)) {
                     final Integer index = i;
                     JButton verContenido = new JButton("Ver");
-                    System.out.println(principal.base_datos.nombre_videos.get(i));
+                    // Se mostrara el video relacionado si es que presiona el boton verContenido
                     ActionListener actionBottonVer = new ActionListener() {
                         public void actionPerformed(ActionEvent ae) {
                             principal.control_videos
@@ -135,8 +146,9 @@ public class buscador extends JFrame {
                         }
                     };
                     verContenido.addActionListener(actionBottonVer);
-
+                    // Se mostrara la portada relacionado con el video
                     JLabel foto_portada = new JLabel(new ImageIcon(principal.base_datos.ruta_portada.get(i)));
+                    // Se mostrara el titulo relacionado con el video
                     JLabel titulo = new JLabel(principal.base_datos.nombre_videos.get(i));
                     if (tope >= tamano) {
                         tamano += 200;
@@ -165,10 +177,8 @@ public class buscador extends JFrame {
         for (int i = 0; i < principal.base_datos.autores_videos.size(); i++) {
             final Integer index = i;
             JButton verContenido = new JButton("Ver");
-            System.out.println(principal.base_datos.nombre_videos.get(i));
             ActionListener actionBottonVer = new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
-                    System.out.println("OPA" + index);
                     principal.control_videos.reproducirVideoSeleccionado(principal.base_datos.nombre_videos.get(index));
                 }
             };

@@ -30,6 +30,7 @@ public class principal {
     public static agregarvideo agregar_video = new agregarvideo();
 
     public static void main(String[] args) {
+        // Se muestra el login
         v_inicio.setVisible(true);
     }
 }

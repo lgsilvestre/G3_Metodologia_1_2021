@@ -37,26 +37,30 @@ public class filtroFrame extends JFrame {
         componentes();
     }
 
+    // Componentes que tendra el panel
     public void componentes() {
+        // Titulo del frame
         JLabel titulo_frame = new JLabel("Filtro de busqueda");
         titulo_frame.setBounds(150, 20, 150, 20);
         titulo_frame.setForeground(Color.orange);
         panel_filtro.add(titulo_frame);
-
+        // Opcion de filtro: Titulo
         opcion_tituloVideo = new JRadioButton("Titulo", true);
         opcion_tituloVideo.setBounds(80, 100, 100, 20);
         opcion_tituloVideo.setBackground(Color.orange);
         panel_filtro.add(opcion_tituloVideo);
-
+        // Opcion de filtro: Autores
         opcion_AutorVideo = new JRadioButton("Autor");
         opcion_AutorVideo.setBounds(80, 150, 100, 20);
         opcion_AutorVideo.setBackground(Color.orange);
         panel_filtro.add(opcion_AutorVideo);
 
+        // Agrupamos los botones
         grupo_botones = new ButtonGroup();
         grupo_botones.add(opcion_tituloVideo);
         grupo_botones.add(opcion_AutorVideo);
 
+        // Boton para ademas de cerrar el frame servira para aplicar los cambios
         JButton aceptar = new JButton("Aceptar");
         ActionListener actionaceptar = new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
@@ -72,13 +76,12 @@ public class filtroFrame extends JFrame {
 
     }
 
+    // Tipo de action que servira para ver que boton fue seleccionado
     public void botonSeleccionado() {
         if (opcion_tituloVideo.isSelected()) {
             principal.filtro_seleccionado = false;
-            System.out.println(principal.filtro_seleccionado);
         } else if (opcion_AutorVideo.isSelected()) {
             principal.filtro_seleccionado = true;
-            System.out.println(principal.filtro_seleccionado);
         }
     }
 }
